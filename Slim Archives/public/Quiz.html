@@ -1,5 +1,3 @@
-Preciso que o quiz seja exibido no corpo da pagina (ele esta sendo exibido abaixo do footer e nao da nem para ve-lo) e tambem preciso que o botar de iniciar quiz fique centralizado na div
-
 <!DOCTYPE html>
 <html lang="pt-br">
 
@@ -17,7 +15,7 @@ Preciso que o quiz seja exibido no corpo da pagina (ele esta sendo exibido abaix
     <link rel="preconnect" href="https://fonts.gstatic.com">
 </head>
 
-<body>
+<body onload="onloadEsconder()">
 
     <!--header inicio-->
     <div class="header">
@@ -58,15 +56,67 @@ Preciso que o quiz seja exibido no corpo da pagina (ele esta sendo exibido abaix
     <!-- Caixa retangular com texto e botão -->
     <div class="quiz-box">
       <p class="quiz-question">Está pronto(a) para testar o seu conhecimento sobre o Rap God?</p>
-      <button id="btnIniciarQuiz" onclick="iniciarQuiz()">INICIAR QUIZ</button>
+      <div class="quiz-button-container">
+        <button id="btnIniciarQuiz" onclick="iniciarQuiz()">INICIAR QUIZ</button>
+      </div>
     </div>
-  </div>
   
-  <!-- Restante do conteúdo do quiz (mantido do seu código original) -->
-  <div id="pontuacaoEJogo" style="display: none;">
-    <!-- ... (mantenha todo o conteúdo existente dentro desta div) ... -->
-  </div>
+    <!-- Conteúdo do quiz que será exibido após iniciar -->
+    <div id="pontuacaoEJogo" style="display: none;">
+        <div id="pontuacao" class="flex-colunar width-fit-content border-primary">
+            <div id="pontuacaoDuranteJogo" class="flex-colunar padding-8">
+                <span class="width-fit-content">Quantidade de acertos: <span id="spanCertas"></span></span>
+                <span class="width-fit-content">Quantidade de erros: <span id="spanErradas"></span></span>
+            </div>
+            <div id="pontuacaoFinalJogo" class="flex-colunar padding-8">
+                <span id="pontuacaoFinal" class="width-fit-content">Pontuação Final:
+                    <span id="spanPontuacaoFinal">***</span>
+                </span>
+                <span id="msgFinal" class="width-fit-content">***</span>
+            </div>
+        </div>
 
+        <div id="jogo" class="width-fit-content flex-colunar border-secondary">
+            <div id="infoQuestao" class="padding-8">
+                <span>Questão atual: <span id="spanNumeroDaQuestaoAtual"></span> de <span id="qtdQuestoes"></span>
+                    questões.</span>
+            </div>
+
+            <div id="perguntaDaQuestaoAtual" class="padding-8">
+                <span id="spanQuestaoExibida" class="text-bold"></span>
+            </div>
+
+            <div id="infoAlternativas" class="padding-8">
+                <span><em>Escolha uma opção dentre as abaixo:</em></span>
+            </div>
+
+            <div id="opcoes" class="flex-colunar padding-8">
+                <span>
+                    <input type="radio" id="primeiraOpcao" name="option" class="radio" value="alternativaA" />
+                    <label for="primeiraOpcao" class="option" id="labelOpcaoUm"></label>
+                </span>
+                <span>
+                    <input type="radio" id="segundaOpcao" name="option" class="radio" value="alternativaB" />
+                    <label for="segundaOpcao" class="option" id="labelOpcaoDois"></label>
+                </span>
+                <span>
+                    <input type="radio" id="terceiraOpcao" name="option" class="radio" value="alternativaC" />
+                    <label for="terceiraOpcao" class="option" id="labelOpcaoTres"></label>
+                </span>
+                <span>
+                    <input type="radio" id="quartaOpcao" name="option" class="radio" value="alternativaD" />
+                    <label for="quartaOpcao" class="option" id="labelOpcaoQuatro"></label>
+                </span>
+            </div>
+
+            <div id="botoes" class="flex-colunar padding-8">
+                <button onclick="submeter()" id="btnSubmeter">Submeter resposta</button>
+                <button onclick="avancar()" id="btnProx" disabled>Avançar para próxima questão</button>
+                <button onclick="tentarNovamente()" id="btnTentarNovamente" disabled>Tentar novamente</button>
+            </div>
+        </div>
+    </div>
+</div>
 
     <div class="footer">
     <div class="container">
@@ -113,71 +163,8 @@ Preciso que o quiz seja exibido no corpo da pagina (ele esta sendo exibido abaix
     </div>
   </div>
 
-  <body onload="onloadEsconder()">
-    <div id="pontuacaoEJogo">
-        <button id="btnIniciarQuiz" onclick="iniciarQuiz()">INICIAR QUIZ</button>
-
-        <div id="pontuacao" class="flex-colunar width-fit-content border-primary">
-            <div id="pontuacaoDuranteJogo" class="flex-colunar padding-8">
-                <span class="width-fit-content">Quantidade de acertos: <span id="spanCertas"></span></span>
-                <span class="width-fit-content">Quantidade de erros: <span id="spanErradas"></span></span>
-            </div>
-            <div id="pontuacaoFinalJogo" class="flex-colunar padding-8">
-                <span id="pontuacaoFinal" class="width-fit-content">Pontuação Final:
-                    <span id="spanPontuacaoFinal">***</span>
-                </span>
-                <span id="msgFinal" class="width-fit-content">***</span>
-            </div>
-        </div>
-
-        <div id="jogo" class="width-fit-content flex-colunar border-secondary">
-
-            <div id="infoQuestao" class="padding-8">
-                <span>Questão atual: <span id="spanNumeroDaQuestaoAtual"></span> de <span id="qtdQuestoes"></span>
-                    questões.</span>
-            </div>
-
-            <div id="perguntaDaQuestaoAtual" class="padding-8">
-                <span id="spanQuestaoExibida" class="text-bold"></span>
-            </div>
-
-            <div id="infoAlternativas" class="padding-8">
-                <span><em>Escolha uma opção dentre as abaixo:</em></span>
-            </div>
-
-            <div id="opcoes" class="flex-colunar padding-8">
-                <span>
-                    <input type="radio" id="primeiraOpcao" name="option" class="radio" value="alternativaA" />
-                    <label for="primeiraOpcao" class="option" id="labelOpcaoUm"></label>
-                </span>
-                <span>
-                    <input type="radio" id="segundaOpcao" name="option" class="radio" value="alternativaB" />
-                    <label for="segundaOpcao" class="option" id="labelOpcaoDois"></label>
-                </span>
-                <span>
-                    <input type="radio" id="terceiraOpcao" name="option" class="radio" value="alternativaC" />
-                    <label for="terceiraOpcao" class="option" id="labelOpcaoTres"></label>
-                </span>
-                <span>
-                    <input type="radio" id="quartaOpcao" name="option" class="radio" value="alternativaD" />
-                    <label for="quartaOpcao" class="option" id="labelOpcaoQuatro"></label>
-                </span>
-            </div>
-
-            <div id="botoes" class="flex-colunar padding-8">
-                <button onclick="submeter()" id="btnSubmeter">Submeter resposta</button>
-                <button onclick="avancar()" id="btnProx" disabled>Avançar para próxima questão</button>
-                <!-- <button onclick="finalizar()" id="btnConcluir" disabled>Finalizar Quiz</button> -->
-                <button onclick="tentarNovamente()" id="btnTentarNovamente" disabled>Tentar novamente</button>
-            </div>
-
-        </div>
-    </div>
-</body>
-
 <script>
     const listaDeQuestoes = [
-
         {
             pergunta: "Qual mês tem 30 dias?",
             alternativaA: "Janeiro",
@@ -186,7 +173,6 @@ Preciso que o quiz seja exibido no corpo da pagina (ele esta sendo exibido abaix
             alternativaD: "Agosto",
             alternativaCorreta: "alternativaC"
         },
-
         {
             pergunta: "Quantas horas tem em um dia?",
             alternativaA: "30 horas",
@@ -195,7 +181,6 @@ Preciso que o quiz seja exibido no corpo da pagina (ele esta sendo exibido abaix
             alternativaD: "24 horas",
             alternativaCorreta: "alternativaD"
         },
-
         {
             pergunta: "Qual destes números é ímpar?",
             alternativaA: "Dez",
@@ -204,7 +189,6 @@ Preciso que o quiz seja exibido no corpo da pagina (ele esta sendo exibido abaix
             alternativaD: "Onze",
             alternativaCorreta: "alternativaD"
         }
-
     ]
 
     // variáveis globais    
@@ -214,29 +198,26 @@ Preciso que o quiz seja exibido no corpo da pagina (ele esta sendo exibido abaix
     let certas = 0
     let erradas = 0
     let quantidadeDeQuestoes = listaDeQuestoes.length
-    // let isUltima = numeroDaQuestaoAtual == quantidadeDeQuestoes-1 ? true : false
 
     function onloadEsconder() {
-    document.getElementById('pontuacaoEJogo').style.display = "none";
-    document.getElementById('pontuacao').style.display = "none";
-    document.getElementById('jogo').style.display = "none";
-    document.getElementById('btnIniciarQuiz').style.display = "block";
-}
+        document.getElementById('pontuacaoEJogo').style.display = "none";
+        document.getElementById('pontuacao').style.display = "none";
+        document.getElementById('jogo').style.display = "none";
+        document.getElementById('btnIniciarQuiz').style.display = "block";
+    }
 
-function iniciarQuiz() {
-    document.getElementById('pontuacaoEJogo').style.display = "block";
-    document.getElementById('pontuacao').style.display = "flex";
-    document.getElementById('jogo').style.display = "flex";
-    document.getElementById('btnIniciarQuiz').style.display = "none";
-    document.querySelector('.quiz-box').style.display = "none";
-    document.querySelector('.quiz-title').style.display = "none";
-    
+    function iniciarQuiz() {
+        document.getElementById('pontuacaoEJogo').style.display = "block";
+        document.getElementById('pontuacao').style.display = "flex";
+        document.getElementById('jogo').style.display = "flex";
+        document.querySelector('.quiz-box').style.display = "none";
+        document.querySelector('.quiz-title').style.display = "none";
 
         document.getElementById('qtdQuestoes').innerHTML = quantidadeDeQuestoes;
-    preencherHTMLcomQuestaoAtual(0);
-    btnSubmeter.disabled = false;
-    btnProx.disabled = true;
-    btnTentarNovamente.disabled = true;
+        preencherHTMLcomQuestaoAtual(0);
+        btnSubmeter.disabled = false;
+        btnProx.disabled = true;
+        btnTentarNovamente.disabled = true;
     }
 
     function preencherHTMLcomQuestaoAtual(index) {
@@ -283,7 +264,6 @@ function iniciarQuiz() {
         segundaOpcao.disabled = opcaoEscolhida
         terceiraOpcao.disabled = opcaoEscolhida
         quartaOpcao.disabled = opcaoEscolhida
-
     }
 
     function avancar() {
@@ -379,7 +359,6 @@ function iniciarQuiz() {
 
         textoParaMensagemFinal += "<br> Você acertou " + Math.round((porcentagemFinalDeAcertos)*100) + "% das questões."
 
-
         document.getElementById('msgFinal').innerHTML = textoParaMensagemFinal
         document.getElementById('msgFinal').classList.add(classComCoresParaMensagemFinal) 
         document.getElementById('spanPontuacaoFinal').innerHTML = pontuacaoFinal
@@ -388,14 +367,8 @@ function iniciarQuiz() {
 
         btnProx.disabled = true
         btnSubmeter.disabled = true
-        // btnConcluir.disabled = true
         btnTentarNovamente.disabled = false
-
     }
 </script>
 
 </html>
-
-
-
-

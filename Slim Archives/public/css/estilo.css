@@ -573,7 +573,7 @@ input {
 }
 
 .slide:nth-child(3) {
-  background-image: url('../assets/imgs/Marshall.png'); 
+  background-image: url('../assets/imgs/MarshallBanner.png'); 
 }
 
 .slide .container p {
@@ -729,28 +729,7 @@ input {
 /* Não usar pure white or pure black: https://uxplanet.org/basicdesign-never-use-pure-black-in-typography-36138a3327a6 */
 /* The 4-point grid system: https://medium.com/@sainzkike/controlling-spacing-in-design-systems-multiple-spacing-9bf1afec87f */
 
-/* :root {
-  --primary-brand-color: #ED145B;
-  --secondary-brand-color: #0762C8;
-  --success: #198754;
-  --success-dark: #095c36;
-  --success-light: #9dd3ba;
-  --warning: #ffc107;
-  --warning-dark: #705400;
-  --warning-light: #fdebb3;
-  --danger: #dc3545;
-  --danger-dark: #990c19;
-  --danger-light: #f0c1c6;
-  --new-gray: #CCCCCC;
-  --new-black: #212427;
-  --new-white: #E8E8E8;
-}
-
-body {
-  color: var(--new-black);
-  background-color: var(--new-white);
-  font-family: Verdana, Geneva, Tahoma, sans-serif;
-}
+ 
 
 button {
   font-family: monospace;
@@ -799,9 +778,17 @@ button {
 
 .text-new-gray {
   color: var(--new-gray);
-} */
-
+}
 /* Estilos para a página do Quiz */
+
+
+
+
+/* Adicione isto APENAS no final do seu CSS existente, sem remover nada do que você já tem */
+
+
+
+/* ===== ESTILOS ESPECÍFICOS PARA O QUIZ ===== */
 .quiz-container {
   position: relative;
   min-height: calc(100vh - var(--tamanho-header) - var(--tamanho-footer));
@@ -809,8 +796,7 @@ button {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: flex-start;
-  overflow: hidden;
+  background-color: #000;
 }
 
 .quiz-background {
@@ -819,6 +805,7 @@ button {
   left: 0;
   width: 100%;
   height: 100%;
+  background-image: url('./assets/imgs/EminemQuiz.png');
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -828,13 +815,13 @@ button {
 
 .quiz-title {
   color: #ED145B;
-  font-size: 4rem;
+  font-size: 3rem;
   font-weight: 900;
   text-align: center;
-  margin: 20px 0 40px;
+  margin: 20px 0;
   text-transform: uppercase;
   letter-spacing: 3px;
-  font-family: 'Impact', 'Haettenschweiler', 'Arial Narrow Bold', sans-serif;
+  font-family: 'Barlow', sans-serif;
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
 }
 
@@ -842,22 +829,29 @@ button {
   background-color: #ED145B;
   padding: 30px;
   border-radius: 10px;
-  width: 60%;
+  width: 80%;
   max-width: 600px;
   text-align: center;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
 }
 
 .quiz-question {
-  color: black;
+  color: #000;
   font-size: 1.5rem;
   font-weight: 700;
   margin-bottom: 30px;
 }
 
+.quiz-button-container {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  margin-top: 20px;
+}
+
 #btnIniciarQuiz {
-  background-color: black;
-  color: white;
+  background-color: #000;
+  color: #fff;
   border: none;
   padding: 15px 30px;
   font-size: 1.2rem;
@@ -865,8 +859,6 @@ button {
   border-radius: 5px;
   cursor: pointer;
   transition: all 0.3s ease;
-  text-transform: uppercase;
-  letter-spacing: 1px;
 }
 
 #btnIniciarQuiz:hover {
@@ -874,17 +866,189 @@ button {
   transform: scale(1.05);
 }
 
-/* Responsividade */
+#pontuacaoEJogo {
+  width: 90%;
+  max-width: 800px;
+  margin: 20px auto;
+  padding: 20px;
+  background-color: rgba(0, 0, 0, 0.7);
+  border-radius: 10px;
+  color: #fff;
+  display: none;
+}
+
+#jogo {
+  width: 100%;
+  margin-top: 20px;
+  background-color: rgba(0, 0, 0, 0.5);
+  border-radius: 10px;
+  padding: 20px;
+}
+
+#opcoes span {
+  margin: 10px 0;
+  padding: 10px;
+  background-color: rgba(255, 255, 255, 0.1);
+  border-radius: 5px;
+  display: block;
+}
+
+#botoes button {
+  margin: 10px 0;
+  padding: 10px 20px;
+  background-color: #ED145B;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background-color 0.3s;
+}
+
+#botoes button:hover {
+  background-color: #c5114b;
+}
+
+#botoes button:disabled {
+  background-color: #666;
+  cursor: not-allowed;
+}
+
+.text-success-with-bg {
+  background-color: rgba(0, 255, 0, 0.2);
+  color: #0f0;
+  padding: 5px;
+  border-radius: 3px;
+}
+
+.text-danger-with-bg {
+  background-color: rgba(255, 0, 0, 0.2);
+  color: #f00;
+  padding: 5px;
+  border-radius: 3px;
+}
+
+/* Responsividade do Quiz */
 @media (max-width: 768px) {
   .quiz-title {
-    font-size: 2.5rem;
+    font-size: 2rem;
   }
   
   .quiz-box {
-    width: 80%;
+    width: 90%;
+    padding: 20px;
   }
   
   .quiz-question {
     font-size: 1.2rem;
   }
+  
+  #pontuacaoEJogo {
+    width: 95%;
+    padding: 15px;
+  }
+}
+
+.music-player {
+  display: flex;
+  background: rgba(0, 0, 0, 0.8);
+  border-radius: 15px;
+  padding: 20px;
+  max-width: 600px;
+  margin: 30px auto;
+  border: 1px solid #ED145B;
+  box-shadow: 0 10px 30px rgba(237, 20, 91, 0.2);
+}
+
+.album-cover {
+  width: 150px;
+  height: 150px;
+  margin-right: 20px;
+}
+
+.album-cover img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+.player-controls {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.music-title {
+  color: #fff;
+  margin: 0 0 5px 0;
+  font-size: 1.4rem;
+}
+
+.album-info {
+  color: #aaa;
+  margin: 0 0 15px 0;
+  font-size: 0.9rem;
+}
+
+.progress-container {
+  height: 6px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 3px;
+  margin: 10px 0;
+  cursor: pointer;
+}
+
+.progress-bar {
+  height: 100%;
+  background: #ED145B;
+  border-radius: 3px;
+  width: 0%;
+  transition: width 0.1s linear;
+}
+
+.time-info {
+  display: flex;
+  justify-content: space-between;
+  color: #aaa;
+  font-size: 0.8rem;
+  margin-bottom: 15px;
+}
+
+.controls {
+  display: flex;
+  justify-content: center;
+  gap: 25px;
+}
+
+.control-btn {
+  background: none;
+  border: none;
+  color: white;
+  font-size: 1.5rem;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.control-btn:hover {
+  color: #ED145B;
+  transform: scale(1.1);
+}
+
+.play-btn {
+  font-size: 2rem;
+}
+
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+.album-cover img {
+  animation: spin 20s linear infinite;
+  animation-play-state: paused;
+}
+
+.album-cover.playing img {
+  animation-play-state: running;
 }
