@@ -61,7 +61,7 @@
           </div>
           <div class="campo">
             <span>Nome de Usuário:</span>
-            <input id="nome_input" type="text" placeholder="Seu nome de usuário" />
+            <input id="nomeUsuario_input" type="text" placeholder="Seu nome de usuário" />
           </div>
           <div class="campo">
             <span>E-mail:</span>
@@ -274,5 +274,16 @@
   function sumirMensagem() {
     cardErro.style.display = "none";
   }
+
+  async function registerUser(userData) {
+  const response = await fetch('http://localhost:3000/api/register', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(userData),
+  });
+  return await response.json();
+}
 </script>
 
