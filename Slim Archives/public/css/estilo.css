@@ -1,0 +1,890 @@
+@import url('https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Barlow', 'Segoe UI', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: black;
+}
+
+:root {
+  --tamanho-header: 100px;
+  --tamanho-banner: calc(100vh - var(--tamanho-header) - var(--tamanho-footer) - 2px);
+  --tamanho-simulador: calc(100vh - var(--tamanho-header) - var(--tamanho-footer) - 2px);
+  --tamanho-login: calc(150vh - var(--tamanho-header) - var(--tamanho-footer) - 2px);
+  --tamanho-footer: 65px;
+}
+
+
+/*Navbar*/
+.header {
+  height: var(--tamanho-header);
+  border-bottom: 2px solid #ec390c;
+  display: flex;
+  align-items: center;
+}
+
+.header .container {
+  justify-content: space-between;
+  align-items: center;
+  height: 100%;
+  width: 100%;
+}
+
+.logo-container {
+  display: flex;
+  align-items: center;
+  gap: px;
+  height: 100%;
+}
+
+.logo {
+  height: 50px; 
+  width: auto;
+  object-fit: contain;
+}
+
+.titulo {
+  color: #e5e5e5;
+  font-weight: 900;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  margin: 0;
+  white-space: nowrap;
+}
+
+.navbar {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  gap: 20px;
+  height: 100%;
+}
+
+.navbar li {
+  height: 100%;
+  display: flex;
+  align-items: center;
+}
+
+.navbar a {
+  text-decoration: none;
+  color: #e5e5e5;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  padding: 0 5px;
+  transition: color 0.3s;
+}
+
+.navbar a:hover {
+  color: #ec390c;
+}
+
+.agora a {
+  font-weight: 800;
+  color: #ec390c !important;
+}
+
+
+.abas {
+display: flex;
+margin: auto;
+width: 50%;
+align-items: start;
+}
+
+
+
+.container {
+  display: flex;
+  width: 80%;
+  margin: auto;
+}
+
+
+.header a {
+  text-decoration: none;
+  color: #e5e5e5;
+}
+
+.agora {
+  font-weight: 800;
+}
+
+.header h1 {
+  margin: 0;
+}
+
+/* BANNER */
+
+.banner {
+  height: var(--tamanho-banner);
+  color: white;
+  background-image: url('../assets/imgs/EminemBanner.png');
+  background-size: cover;
+  object-fit: cover;
+}
+
+.banner .container {
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+
+.banner .container p {
+  width: 50%;
+  margin: 0;
+  padding: 0;
+  font-size: 36px;
+}
+
+.banner .container span {
+  font-weight: 800;
+}
+
+/* MISSÃO VISÃO VALORES */
+
+.social {
+  background-color: #e5e5e5;
+  display: flex;
+}
+
+.social .container {
+  justify-content: center;
+}
+
+.box img {
+  width: 170px;
+}
+
+.social .container .boxes {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  padding: 30px 0;
+}
+
+.social p {
+  text-align: center;
+}
+
+.box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* FOOTER */
+
+.footer {
+  background-color: #ec390c;
+  color: #fff;
+  padding: 40px 0;
+  font-family: 'Barlow', sans-serif;
+}
+
+.footer .container {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  flex-wrap: wrap;
+}
+
+.footer-left, 
+.footer-center, 
+.footer-right {
+  flex: 1;
+  min-width: 250px;
+  padding: 0 20px;
+  margin-bottom: 20px;
+}
+
+.footer-title {
+  font-size: 28px;
+  font-weight: 800;
+  margin-bottom: 10px;
+  color: white;
+}
+
+.footer-description {
+  font-size: 16px;
+  line-height: 1.5;
+  margin: 0;
+}
+
+.footer-center {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.footer-center h4 {
+  margin-bottom: 15px;
+  font-size: 18px;
+}
+
+.footer-image-placeholder {
+  width: auto;
+  height: 50px;
+  background-color: rgba(255, 255, 255, 0.2);
+  margin-bottom: 10px;
+  border-radius: 5px;
+}
+
+.footer-right {
+  text-align: right;
+}
+
+.footer-right h4 {
+  font-size: 18px;
+  margin-bottom: 15px;
+  font-weight: 600;
+}
+
+.social-link {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  margin-bottom: 10px;
+  gap: 10px;
+}
+
+.social-icon-placeholder {
+  width: 24px;
+  height: 24px;
+  background-color: rgba(255, 255, 255, 0.2);
+  border-radius: 50%;
+}
+
+.social-url {
+  font-size: 14px;
+}
+
+.version {
+  font-size: 12px;
+  opacity: 0.8;
+}
+
+.social-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  text-decoration: none;
+  color: white;
+  transition: all 0.3s ease;
+}
+
+.social-wrapper:hover {
+  color: black; 
+  transform: translateX(5px);
+}
+
+.social-icon {
+  width: 24px;
+  height: 24px;
+  object-fit: contain;
+}
+
+.social-url {
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.social-link:hover .social-url {
+  text-decoration: underline;
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+  .footer-left, 
+  .footer-center, 
+  .footer-right {
+    text-align: center;
+    justify-content: center;
+  }
+  
+  .social-link {
+    justify-content: center;
+  }
+  
+  .footer-right {
+    text-align: center;
+  }
+}
+
+/* LOGIN */
+
+.login {
+  height: var(--tamanho-login);
+  background-image: url('../assets/imgs/casaEminem.png');
+  background-size: cover;
+}
+
+.login .container {
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+
+.card {
+  width: 50%;
+  background-color: #e5e5e5;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  color: #ec390c;
+  flex-direction: column;
+  height: fit-content;
+  padding: 20px 0;
+}
+
+.card h2 {
+  margin: 0;
+  font-size: 30px;
+}
+
+.formulario {
+  display: flex;
+  height: 90%;
+  width: 80%;
+  justify-content: space-around;
+  flex-direction: column;
+}
+
+.formulario span {
+  font-size: 15px;
+  font-weight: 800;
+}
+
+.formulario input {
+  border: 2px solid #32b9cd;
+  text-align: center;
+  border-radius: 10px;
+  margin: 0;
+}
+
+.formulario select {
+  border: 2px solid #32b9cd;
+  background-color: white;
+  color: gray;
+  height: 45px;
+  text-align: center;
+  border-radius: 10px;
+  margin: 0;
+}
+
+.campo {
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  padding: 5px 0;
+}
+
+.botao {
+  cursor: pointer;
+  font-family: "Barlow", sans-serif;
+  border: 0;
+  border-radius: 5px;
+  font-weight: 600;
+  font-size: 18px;
+  color: #fff;
+  background-color: #ec390c;
+  width: 120px;
+  height: 30px;
+  align-self: center;
+  margin-top: 20px;
+}
+
+.loading-div {
+  width: 50px;
+  display: none;
+}
+
+.loading-div img {
+  height: 50px;
+  width: 50px;
+}
+
+#div_erros_login {
+  display: none
+}
+
+/* FORMULARIO */
+
+.alerta_erro{
+  display: flex;
+  justify-content: flex-end;
+}
+
+.card_erro {
+  display: none;
+  background-color: #fff;
+  color: black;
+  width: 230px;
+  position: fixed;
+  border-radius: 4px;
+  border: #ED145B 3px solid;
+  padding: 10px;
+  margin-right: 10%;
+}
+
+.card_erro #mensagem_erro{
+  font-weight: 500;
+  font-size: 20px;
+}
+
+.formulario .tipo_campo {
+  font-size: 20px;
+  font-weight: 600 !important;
+}
+
+.formulario {
+  display: flex;
+  flex-direction: column;
+}
+
+input {
+  margin-bottom: 10px;
+  border: 2px solid #32b9cd;
+  padding: 10px;
+  text-align: center;
+  border-radius: 10px;
+}
+
+.btn {
+  font-family: "Barlow", sans-serif;
+  border: 0;
+  border-radius: 5px;
+  font-weight: 600;
+  font-size: 18px;
+  padding: 10px 15px;
+  color: white;
+  background-color: #ED145B;
+  width: 120px;
+  align-self: center;
+  margin-top: 5px;
+}
+
+.loading-div {
+  width: 50px;
+  margin: auto;
+  display: none;
+}
+
+.loading-div img {
+  height: 50px;
+  width: 50px;
+}
+
+/* SIMULADOR */
+
+.simulador {
+  color: white;
+}
+
+.simulador .container {
+  flex-direction: column;
+  overflow: scroll; 
+  height: var(--tamanho-simulador);
+}
+
+/* ALERTA */
+
+#alerta {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+}
+
+.mensagem-alarme {
+  background-color: white;
+  border-radius: 5px;
+  width: 300px;
+  height: 80px;
+  margin: 10px;
+  padding: 10px 0;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+.mensagem-alarme h3 {
+  font-size: 14px;
+  margin: 0;
+}
+
+.mensagem-alarme .informacao {
+  width: 66%;
+}
+
+.alarme-sino {
+  width: 48px;
+  height: 48px;
+  animation-name: bell;
+  animation-duration: 4s;
+  background-image: url('https://cdn-icons-png.flaticon.com/512/1157/1157000.png');
+  background-size: cover;
+  animation-iteration-count: infinite;
+
+}/*Banner Carousel*/
+
+.banner-carousel {
+  position: relative;
+  height: var(--tamanho-banner);
+  overflow: hidden;
+}
+
+.slides-container {
+  position: relative;
+  height: 100%;
+  width: 100%;
+}
+
+.slide {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  transition: opacity 1s ease-in-out;
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.slide.active {
+  opacity: 1;
+}
+
+.slide:nth-child(1) {
+  background-image: url('../assets/imgs/EminemBanner.png');
+}
+
+.slide:nth-child(2) {
+  background-image: url('../assets/imgs/SlimShady.png'); 
+}
+
+.slide:nth-child(3) {
+  background-image: url('../assets/imgs/Marshall.png'); 
+}
+
+.slide .container p {
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  font-size: 36px;
+  color: red;
+  text-align: center;
+}
+
+.slide .container span {
+  font-weight: 800;
+}
+
+.indicators {
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 10px;
+}
+
+.indicator {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background-color: rgba(255, 255, 255, 0.5);
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.indicator.active {
+  background-color: white;
+}
+
+/*Social*/
+
+.social {
+  background-color: #000;
+  padding: 60px 0;
+  color: white;
+}
+
+.social .container {
+  flex-direction: column;
+  gap: 60px;
+}
+
+.content-box {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  gap: 40px;
+}
+
+.content-box.first, .content-box.third {
+  flex-direction: row;
+}
+
+.content-box.second {
+  flex-direction: row-reverse;
+}
+
+.image-container {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+}
+
+.image-container img {
+  max-width: 300px;
+  height: auto;
+  object-fit: contain;
+}
+
+.text-container {
+  flex: 1;
+  padding: 20px;
+}
+
+.text-container h4 {
+  font-size: 28px;
+  margin-bottom: 20px;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
+.text-container p {
+  font-size: 18px;
+  line-height: 1.6;
+  color: #e5e5e5;
+  text-align: left;
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+  .content-box, 
+  .content-box.first, 
+  .content-box.second, 
+  .content-box.third {
+    flex-direction: column;
+  }
+  
+  .image-container, 
+  .text-container {
+    width: 100%;
+    text-align: center;
+  }
+  
+  .text-container p {
+    text-align: center;
+  }
+}
+
+
+/*Select de álbuns*/
+.album-select {
+  border: 2px transparent #ED145B;
+  border-radius: 10px;
+  padding: 10px;
+  width: 100%;
+  background-color: white;
+  color: #333;
+  font-family: 'Barlow', sans-serif;
+  font-size: 16px;
+  margin-bottom: 10px;
+  cursor: pointer;
+}
+
+.album-select:focus {
+  outline: none;
+  border-color: #ED145B;
+}
+
+
+.album-select option {
+  padding: 10px;
+  background-color: white;
+  color: #333;
+}
+
+@keyframes bell {
+  0%   {transform: rotate(25deg)}
+  25%  {transform: rotate(-25deg)}
+  50%  {transform: rotate(25deg)}
+  75%  {transform: rotate(-25deg)}
+  100% {transform: rotate(25deg)}
+}
+
+/* Não usar pure white or pure black: https://uxplanet.org/basicdesign-never-use-pure-black-in-typography-36138a3327a6 */
+/* The 4-point grid system: https://medium.com/@sainzkike/controlling-spacing-in-design-systems-multiple-spacing-9bf1afec87f */
+
+/* :root {
+  --primary-brand-color: #ED145B;
+  --secondary-brand-color: #0762C8;
+  --success: #198754;
+  --success-dark: #095c36;
+  --success-light: #9dd3ba;
+  --warning: #ffc107;
+  --warning-dark: #705400;
+  --warning-light: #fdebb3;
+  --danger: #dc3545;
+  --danger-dark: #990c19;
+  --danger-light: #f0c1c6;
+  --new-gray: #CCCCCC;
+  --new-black: #212427;
+  --new-white: #E8E8E8;
+}
+
+body {
+  color: var(--new-black);
+  background-color: var(--new-white);
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+button {
+  font-family: monospace;
+  font-weight: bold;
+}
+
+.flex-colunar {
+  display: flex;
+  flex-direction: column;
+}
+
+.width-fit-content {
+  width: fit-content;
+}
+
+.border-primary {
+  border: 3px solid var(--primary-brand-color);
+}
+
+.border-secondary {
+  border: 3px solid var(--secondary-brand-color);
+}
+
+.padding-8 {
+  padding: 8px;
+}
+
+.text-bold {
+  font-weight: bold;
+}
+
+.text-success-with-bg {
+  color: var(--success-dark);
+  background-color: var(--success-light);
+}
+
+.text-warning-with-bg {
+  color: var(--warning-dark);
+  background-color: var(--warning-light);
+}
+
+.text-danger-with-bg {
+  color: var(--danger-dark);
+  background-color: var(--danger-light);
+}
+
+.text-new-gray {
+  color: var(--new-gray);
+} */
+
+/* Estilos para a página do Quiz */
+.quiz-container {
+  position: relative;
+  min-height: calc(100vh - var(--tamanho-header) - var(--tamanho-footer));
+  padding: 40px 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  overflow: hidden;
+}
+
+.quiz-background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  opacity: 0.3;
+  z-index: -1;
+}
+
+.quiz-title {
+  color: #ED145B;
+  font-size: 4rem;
+  font-weight: 900;
+  text-align: center;
+  margin: 20px 0 40px;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  font-family: 'Impact', 'Haettenschweiler', 'Arial Narrow Bold', sans-serif;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.quiz-box {
+  background-color: #ED145B;
+  padding: 30px;
+  border-radius: 10px;
+  width: 60%;
+  max-width: 600px;
+  text-align: center;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+.quiz-question {
+  color: black;
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin-bottom: 30px;
+}
+
+#btnIniciarQuiz {
+  background-color: black;
+  color: white;
+  border: none;
+  padding: 15px 30px;
+  font-size: 1.2rem;
+  font-weight: bold;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+#btnIniciarQuiz:hover {
+  background-color: #333;
+  transform: scale(1.05);
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+  .quiz-title {
+    font-size: 2.5rem;
+  }
+  
+  .quiz-box {
+    width: 80%;
+  }
+  
+  .quiz-question {
+    font-size: 1.2rem;
+  }
+}

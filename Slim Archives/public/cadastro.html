@@ -1,0 +1,279 @@
+Preciso que na aba de selecionar album, seja um select com 19 opcoes, que o usuario escolhera e eu usarei depois essas informacoes no banco de disable_logged_in_session
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Slim Archives | Cadastro</title>
+
+  <script src="./js/sessao.js"></script>
+
+  <link rel="stylesheet" href="./css/estilo.css" />
+  <link rel="icon" href="./assets/icon/IconEminem.png" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" />
+</head>
+
+<body onload="listar()">
+  <!--header inicio-->
+  <div class="header">
+    <div class="container">
+      <div class="logo-container">
+        <img src="./assets/icon/IconEminem.png" class="logo" alt="Logo Slim Archives">
+        <h1 class="titulo">Slim Archives</h1>
+      </div>
+      <ul class="navbar">
+        <li>
+          <a href="index.html">Inicial</a>
+        </li>
+        <li>
+          <a href="Discografia.html">Discografia</a>
+        </li>
+        <li>
+          <a href="Quiz.html">Quiz</a>
+        </li>
+        <li>|</li>
+        <li>
+          <a href="login.html">Login</a>
+        </li>
+        <li class="agora">
+          <a href="#">Cadastro</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+  <!--header fim-->
+
+  <div class="login">
+    <div class="alerta_erro">
+      <div class="card_erro" id="cardErro">
+        <span id="mensagem_erro"></span>
+      </div>
+    </div>
+    <div class="container">
+      <div class="card card-cadastro">
+        <h2>Bem-vindo!</h2>
+        <div class="formulario">
+          <div class="campo">
+            <span>Nome:</span>
+            <input id="nome_input" type="text" placeholder="Seu nome" />
+          </div>
+          <div class="campo">
+            <span>Nome de Usuário:</span>
+            <input id="nome_input" type="text" placeholder="Seu nome de usuário" />
+          </div>
+          <div class="campo">
+            <span>E-mail:</span>
+            <input id="email_input" type="text" placeholder="meuemail@provedor.com" />
+          </div>
+          <div class="campo">
+            <span>Senha:</span>
+            <input id="senha_input" type="password" placeholder="******" />
+          </div>
+          <div class="campo">
+            <span>Confirmação da Senha:</span>
+            <input id="confirmacao_senha_input" type="password" placeholder="******" />
+          </div>
+          <div class="campo">
+            <span>Álbum do Eminem favorito:</span>
+            <select id="album_input" class="album-select">
+              <option value="" disabled selected>Selecione seu álbum favorito</option>
+              <option value="The Slim Shady LP (1999)">The Slim Shady LP (1999)</option>
+              <option value="The Marshall Mathers LP (2000)">The Marshall Mathers LP (2000)</option>
+              <option value="The Eminem Show (2002)">The Eminem Show (2002)</option>
+              <option value="8 Mile Soundtrack (2002)">8 Mile Soundtrack (2002)</option>
+              <option value="D12 World (2004) - com D12">D12 World (2004) - com D12</option>
+              <option value="Encore (2004)">Encore (2004)</option>
+              <option value="Curtain Call: The Hits (2005)">Curtain Call: The Hits (2005)</option>
+              <option value="Eminem Presents The Re-Up">Eminem Presents The Re-Up (2006)</option>
+              <option value="Relapse (2009)">Relapse (2009)</option>
+              <option value="Relapse: Refil (2009)">Relapse Refil (2009)</option>
+              <option value="Recovery (2010)">Recovery (2010)</option>
+              <option value="Hell: The Sequel (2011) - com Bad Meets Evil">Hell: The Sequel (2011) - com Bad Meets Evil</option>
+              <option value="The Marshall Mathers LP 2 (2013)">The Marshall Mathers LP 2 (2013)</option>
+              <option value="Revival (2017)">Revival (2017)</option>
+              <option value="Kamikaze (2018)">Kamikaze (2018)</option>
+              <option value="Music to Be Murdered By (2020)">Music to Be Murdered By (2020)</option>
+              <option value="Music to Be Murdered By - Side B (2020)">Music to Be Murdered By - Side B (2020)</option>
+              <option value="Curtain Call 2 (2022)">Curtain Call 2 (2022)</option>
+              <option value="The Death of Slim Shady (2024)">The Death of Slim Shady (2024)</option>
+            </select>
+          </div>
+          <button class="botao" onclick="cadastrar()">Cadastrar</button>
+        </div>
+        <div id="div_aguardar" class="loading-div">
+          <img src="./assets/circle-loading.gif" id="loading-gif" />
+        </div>
+
+        <div id="div_erros_login"></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer">
+    <div class="container">
+      <div class="footer-left">
+        <h3 class="footer-title">Slim Archives</h3>
+        <p class="footer-description">Página dedicada ao Eminem<br>- Para stans assim como eu -</p>
+      </div>
+      
+      <div class="footer-center">
+        <div class="footer-image-placeholder">
+          <img src="./assets/imgs/Spotify.png" class="footer-image-placeholder">
+        </div>
+        <h4>Feito por Kauã Medeiros &copy;</h4>
+        <span class="version">v1.0.0</span>
+      </div>
+      
+      <div class="footer-right">
+        <h4>Redes sociais do Eminem:</h4>
+        <div class="social-link">
+          <a href="https://www.instagram.com/eminem" target="_blank" class="social-wrapper">
+            <img src="./assets/icon/icons8-instagram-26.png" class="social-icon">
+            <span class="social-url">Instagram</span>
+          </a>
+        </div>
+        <div class="social-link">
+          <a href="https://twitter.com/Eminem" target="_blank" class="social-wrapper">
+            <img src="./assets/icon/X.png" class="social-icon">
+            <span class="social-url">X (antigo twitter)</span>
+          </a>
+        </div>
+        <div class="social-link">
+          <a href="https://www.youtube.com/eminem" target="_blank" class="social-wrapper">
+            <img src="./assets/icon/icons8-youtube-50.png" class="social-icon">
+            <span class="social-url">Youtube</span>
+          </a>
+        </div>
+        <div class="social-link">
+          <a href="https://www.spotify.com/eminem" target="_blank" class="social-wrapper">
+            <img src="./assets/icon/SpotyfyLogoNovo.png" class="social-icon">
+            <span class="social-url">Spotify</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</body>
+
+</html>
+
+<script>
+
+  // Array para armazenar email cadastrads para validação de código de ativação 
+  let listaEmailsCadastrados = [];
+
+  function cadastrar() {
+    // aguardar();
+
+    //Recupere o valor da nova input pelo nome do id
+    // Agora vá para o método fetch logo abaixo
+    var nomeVar = nome_input.value;
+    var nomeUsuario = nomeUsuario_input.value;
+    var emailVar = email_input.value;
+    var senhaVar = senha_input.value;
+    var confirmacaoSenhaVar = confirmacao_senha_input.value;
+    var album = album_input.value;
+    var idEmailVincular
+
+    // Verificando se há algum campo em branco
+    if (
+      nomeVar == "" ||
+      NomeUsuario == "" ||
+      emailVar == "" ||
+      senhaVar == "" ||
+      confirmacaoSenhaVar == "" ||
+      codigoVar == "" ||
+      album == ""
+    ) {
+      cardErro.style.display = "block";
+      mensagem_erro.innerHTML =
+        "(Mensagem de erro para todos os campos em branco)";
+
+      finalizarAguardar();
+      return false;
+    } else {
+      setInterval(sumirMensagem, 5000);
+    }
+
+    // Verificando se o email é de alguma pessoa cadastrada
+    for (let i = 0; i < listaEmailsCadastrados.length; i++) {
+      if (listaEmailsCadastrados[i].codigo_ativacao == codigoVar) {
+        idEmailVincular = listaEmailsCadastrados[i].id
+        console.log("Código de ativação válido.");
+        break;
+      } else {
+        cardErro.style.display = "block";
+        mensagem_erro.innerHTML = "(Mensagem de erro para código inválido)";
+        finalizarAguardar();
+      }
+    }
+
+    // Enviando o valor da nova input
+    fetch("/usuarios/cadastrar", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        // crie um atributo que recebe o valor recuperado aqui
+        // Agora vá para o arquivo routes/usuario.js
+        nomeServer: nomeVar,
+        nomeUsuarioServer : nomeUsuarioVar,
+        emailServer: emailVar,
+        senhaServer: senhaVar,
+        idEmailVincularServer: idEmailVincular
+      }),
+    })
+      .then(function (resposta) {
+        console.log("resposta: ", resposta);
+
+        if (resposta.ok) {
+          cardErro.style.display = "block";
+
+          mensagem_erro.innerHTML =
+            "Cadastro realizado com sucesso! Redirecionando para tela de Login...";
+
+          setTimeout(() => {
+            window.location = "login.html";
+          }, "2000");
+
+          limparFormulario();
+          finalizarAguardar();
+        } else {
+          throw "Houve um erro ao tentar realizar o cadastro!";
+        }
+      })
+      .catch(function (resposta) {
+        console.log(`#ERRO: ${resposta}`);
+        finalizarAguardar();
+      });
+
+    return false;
+  }
+
+  // Listando emails cadastrados 
+  function listar() {
+    fetch("/emails/listar", {
+      method: "GET",
+    })
+      .then(function (resposta) {
+        resposta.json().then((email) => {
+          emails.forEach((email) => {
+            listaEmailsCadastrados.push(emails);
+          });
+        });
+      })
+      .catch(function (resposta) {
+        console.log(`#ERRO: ${resposta}`);
+      });
+  }
+
+  function sumirMensagem() {
+    cardErro.style.display = "none";
+  }
+</script>
+
