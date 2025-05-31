@@ -5,109 +5,35 @@ var caminho_env = ambiente_processo === 'producao' ? '.env' : '.env.dev';
 // Acima, temos o uso do operador ternário para definir o caminho do arquivo .env
 // A sintaxe do operador ternário é: condição ? valor_se_verdadeiro : valor_se_falso
 
-require('dotenv').config();
-const express = require('express');
-const cors = require('cors');
-const mysql = require('mysql2/promise');
-const bcrypt = require('bcryptjs');
-const jwt = require('jsonwebtoken');
+require("dotenv").config({ path: caminho_env });
 
-const app = express();
+var express = require("express");
+var cors = require("cors");
+var path = require("path");
+var PORTA_APP = process.env.APP_PORT;
+var HOST_APP = process.env.APP_HOST;
 
-// Configuração do banco de dados
-const pool = mysql.createPool({
-    host: process.env.DB_HOST || 'localhost',
-    user: process.env.DB_USER || 'root',
-    password: process.env.DB_PASSWORD || '',
-    database: process.env.DB_NAME || 'slim_archive',
-    waitForConnections: true,
-    connectionLimit: 10,
-    queueLimit: 0
-});
+var app = express();
 
-// Middleware
-app.use(cors());
+var indexRouter = require("./src/routes/index");
+var usuarioRouter = require("./src/routes/usuarios");
+var avisosRouter = require("./src/routes/avisos");
+var medidasRouter = require("./src/routes/medidas");
+var aquariosRouter = require("./src/routes/aquarios");
+var empresasRouter = require("./src/routes/empresas");
+
 app.use(express.json());
+app.use(express.urlencoded({ extended: false }));
+app.use(express.static(path.join(__dirname, "public")));
 
-// Rotas de autenticação
-app.post('/api/auth/register', async (req, res) => {
-    try {
-        const { nome, email, senha } = req.body;
-        
-        // Verifica se usuário já existe
-        const [existingUser] = await pool.execute(
-            'SELECT * FROM usuario WHERE email = ?',
-            [email]
-        );
-        
-        if (existingUser.length > 0) {
-            return res.status(400).json({ error: 'Email já cadastrado' });
-        }
-        
-        // Criptografa a senha
-        const hashedPassword = await bcrypt.hash(senha, 10);
-        
-        // Cria o usuário
-        const [result] = await pool.execute(
-            'INSERT INTO usuario (nome, email, senha) VALUES (?, ?, ?)',
-            [nome, email, hashedPassword]
-        );
-        
-        res.status(201).json({ 
-            message: 'Usuário criado com sucesso', 
-            userId: result.insertId 
-        });
-    } catch (error) {
-        console.error(error);
-        res.status(500).json({ error: 'Erro ao registrar usuário' });
-    }
-});
+app.use(cors());
 
-app.post('/api/auth/login', async (req, res) => {
-    try {
-        const { email, senha } = req.body;
-        
-        // Busca usuário
-        const [users] = await pool.execute(
-            'SELECT * FROM usuario WHERE email = ?',
-            [email]
-        );
-        
-        if (users.length === 0) {
-            return res.status(401).json({ error: 'Credenciais inválidas' });
-        }
-        
-        const user = users[0];
-        
-        // Verifica senha
-        const isMatch = await bcrypt.compare(senha, user.senha);
-        if (!isMatch) {
-            return res.status(401).json({ error: 'Credenciais inválidas' });
-        }
-        
-        // Gera token JWT
-        const token = jwt.sign(
-            { userId: user.id_usuario, email: user.email },
-            process.env.JWT_SECRET || 'seuSegredoSuperSecreto',
-            { expiresIn: '1h' }
-        );
-        
-        res.json({ 
-            token, 
-            userId: user.id_usuario, 
-            nome: user.nome 
-        });
-    } catch (error) {
-        console.error(error);
-        res.status(500).json({ error: 'Erro ao fazer login' });
-    }
-});
-
-// Inicia o servidor
-const PORT = process.env.PORT || 3000;
-app.listen(PORT, () => {
-    console.log(`Servidor rodando na porta ${PORT}`);
-});
+app.use("/", indexRouter);
+app.use("/usuarios", usuarioRouter);
+app.use("/avisos", avisosRouter);
+app.use("/medidas", medidasRouter);
+app.use("/aquarios", aquariosRouter);
+app.use("/empresas", empresasRouter);
 
 app.listen(PORTA_APP, function () {
     console.log(`
