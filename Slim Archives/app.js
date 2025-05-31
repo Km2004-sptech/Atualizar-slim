@@ -35,6 +35,56 @@ app.use("/medidas", medidasRouter);
 app.use("/aquarios", aquariosRouter);
 app.use("/empresas", empresasRouter);
 
+// Cadastro
+app.post('/api/cadastro', async (req, res) => {
+  const { nome, email, senha, album } = req.body;
+  
+  try {
+    // 1. Hash da senha (usando bcrypt)
+    const senhaHash = await bcrypt.hash(senha, 10);
+    
+    // 2. Insere no MySQL
+    await connection.execute(
+      `INSERT INTO usuarios (nome, email, senha, album_favorito) 
+       VALUES (?, ?, ?, ?)`,
+      [nome, email, senhaHash, album]
+    );
+    
+    res.json({ message: "Usuário cadastrado!" });
+  } catch (err) {
+    res.status(500).json({ error: "Erro no cadastro" });
+  }
+});
+
+// Login
+app.post('/api/login', async (req, res) => {
+  const { email, senha } = req.body;
+  
+  const [user] = await connection.execute(
+    'SELECT * FROM usuarios WHERE email = ?', 
+    [email]
+  );
+  
+  if (user.length === 0) {
+    return res.status(401).json({ error: "Credenciais inválidas" });
+  }
+  
+  const senhaValida = await bcrypt.compare(senha, user[0].senha);
+  if (!senhaValida) {
+    return res.status(401).json({ error: "Credenciais inválidas" });
+  }
+  
+  // Gera token JWT para sessão (opcional)
+  const token = jwt.sign({ id: user[0].id }, 'seuSegredo');
+  res.json({ token, user: user[0] });
+});
+
+const cors = require('cors');
+app.use(cors({
+  origin: 'localhost',
+  credentials: true
+}));
+
 app.listen(PORTA_APP, function () {
     console.log(`
     ##   ##  ######   #####             ####       ##     ######     ##              ##  ##    ####    ######  
