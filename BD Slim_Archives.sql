@@ -1,13 +1,9 @@
 
-
-/*
-comandos para mysql - banco local
-*/
-
+drop database SlimArchives;
 CREATE DATABASE IF NOT EXISTS SlimArchives;
 USE SlimArchives;
 
-CREATE TABLE Usuario (
+CREATE TABLE Usuario (  
     id INT AUTO_INCREMENT PRIMARY KEY,
     nome VARCHAR(100) NOT NULL,
     nome_usuario VARCHAR(50) UNIQUE NOT NULL,
@@ -31,11 +27,11 @@ CREATE TABLE Quiz (
     FOREIGN KEY (usuario_id) REFERENCES Usuario(id)
 );
 
-INSERT INTO albuns (nome_album, ano_lancamento) VALUES
-('Infinite', 1996),
-('The Slim Shady LP', 1999),
-('The Marshall Mathers LP', 2000),
-('The Eminem Show', 2002),
+INSERT INTO albuns (nome_album) VALUES
+('Infinite (1996)'),
+('The Slim Shady LP (1999)'),
+('The Marshall Mathers LP (2000)'),
+('The Eminem Show (2002)'),
 ('8 Mile Soundtrack (2002)'),
 ('D12 World (2004) - com D12'),
 ('Encore (2004)'),
@@ -48,7 +44,8 @@ INSERT INTO albuns (nome_album, ano_lancamento) VALUES
 ('The Marshall Mathers LP 2 (2013)'),
 ('Revival (2017)'),
 ('Kamikaze (2018)'),
-('Music to Be Murdered By', 2020),
+('Music to Be Murdered By (2020)'),
 ('Music to Be Murdered By - Side B (2020)'),
 ('Curtain Call 2 (2022)'),
 ('The Death of Slim Shady (2024)');
+
