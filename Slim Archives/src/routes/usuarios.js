@@ -3,13 +3,11 @@ var router = express.Router();
 
 var usuarioController = require("../controllers/usuarioController");
 
-//Recebendo os dados do html e direcionando para a função cadastrar de usuarioController.js
-router.post("/cadastrar", function (req, res) {
-    usuarioController.cadastrar(req, res);
-})
+// Recebendo os dados do html e direcionando para as funções do controller
+router.post("/cadastrar", usuarioController.cadastrar);
+router.post("/autenticar", usuarioController.autenticar);
 
-router.post("/autenticar", function (req, res) {
-    usuarioController.autenticar(req, res);
-});
+// Rota para registrar o resultado do quiz
+router.post("/quiz", usuarioController.registrarResultadoQuiz);
 
 module.exports = router;
