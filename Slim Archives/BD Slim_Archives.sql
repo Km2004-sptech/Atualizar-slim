@@ -5,12 +5,11 @@ USE slim_archives;
 CREATE TABLE Usuario (  
     id INT AUTO_INCREMENT PRIMARY KEY,
     nome VARCHAR(100) NOT NULL,
-    nome_usuario VARCHAR(50) UNIQUE NOT NULL,
+   -- nome_usuario VARCHAR(50) UNIQUE NOT NULL,
     email VARCHAR(100) UNIQUE NOT NULL,
-    senha VARCHAR(20) NOT NULL,
-    album_favorito_id INT,
-    FOREIGN KEY (album_favorito_id) REFERENCES albuns(id)
-
+    senha VARCHAR(20) NOT NULL
+  --  album_favorito_id INT,
+   -- FOREIGN KEY (album_favorito_id) REFERENCES albuns(id)
 );
 
 CREATE TABLE albuns (
@@ -18,7 +17,7 @@ CREATE TABLE albuns (
     nome_album VARCHAR(100) NOT NULL
 );
 
-CREATE TABLE Quiz (
+ TABLE Quiz (
     id INT AUTO_INCREMENT PRIMARY KEY,
     data_hora DATETIME NOT NULL,
     quantidade_acertos INT NOT NULL,
@@ -47,5 +46,3 @@ INSERT INTO albuns (nome_album) VALUES
 ('Music to Be Murdered By - Side B (2020)'),
 ('Curtain Call 2 (2022)'),
 ('The Death of Slim Shady (2024)');
-
-

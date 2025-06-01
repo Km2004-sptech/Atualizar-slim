@@ -156,110 +156,74 @@
   </div>
 
 </body>
-
-</html>
-
 <script>
 
   // Array para armazenar email cadastrads para validação de código de ativação 
   let listaEmailsCadastrados = [];
 
-  function cadastrar() {
+ function cadastrar() {
+  var nomeVar = nome_input.value;
+  var emailVar = email_input.value;
+  var senhaVar = senha_input.value;
+  var confirmacaoSenhaVar = confirmacao_senha_input.value;
 
-
-    //Recupere o valor da nova input pelo nome do id
-    // Agora vá para o método fetch logo abaixo
-    var nomeVar = nome_input.value;
-    var emailVar = email_input.value;
-    var senhaVar = senha_input.value;
-    var confirmacaoSenhaVar = confirmacao_senha_input.value;
-    // var album = Number(album_input.value);
-    //var idEmailVincular
-
-    // Verificando se há algum campo em branco
-    if (
-      nomeVar == "" ||
-      emailVar == "" ||
-      senhaVar == "" ||
-      confirmacaoSenhaVar == "" 
-    
-    ) 
-
-    // Verificando se o email é de alguma pessoa cadastrada
-    /*for (let i = 0; i < listaEmailsCadastrados.length; i++) {
-      if (listaEmailsCadastrados[i].codigo_ativacao == codigoVar) {
-        idEmailVincular = listaEmailsCadastrados[i].id
-        console.log("Código de ativação válido.");
-        break;
-      } else {
-        cardErro.style.display = "block";
-        mensagem_erro.innerHTML = "(Mensagem de erro para código inválido)";
-
-      }
-    }*/
-
-    // Enviando o valor da nova input
-    fetch("/usuarios/cadastrar", {
-      method: "POST",
-    
-      headers: {
-        "Content-Type": "application/json",
-      },
-
-      body: JSON.stringify({
-        // crie um atributo que recebe o valor recuperado aqui
-        // Agora vá para o arquivo routes/usuario.js
-        nomeServer: nomeVar,
-        emailServer: emailVar,
-        senhaServer: senhaVar,
-        //  albumServer: album
-        //idEmailVincularServer: idEmailVincular
-      }),
-    })
-      .then(function (resposta) {
-        console.log("resposta: ", resposta);
-          console.log("entrou");
-
-        if (resposta.ok) {
-          cardErro.style.display = "block";
-
-          mensagem_erro.innerHTML =
-            "Cadastro realizado com sucesso! Redirecionando para tela de Login...";
-
-          setTimeout(() => {
-            window.location = "login.html";
-          }, "2000");
-
-          limparFormulario();
-        
-        } else {
-          throw "Houve um erro ao tentar realizar o cadastro!";
-        }
-      })
-      .catch(function (resposta) {
-        console.log(`#ERRO: ${resposta}`);
-     
-      });
-
-    return false;
+  // Verificando se há algum campo em branco
+  if (
+    nomeVar === "" ||
+    emailVar === "" ||
+    senhaVar === "" ||
+    confirmacaoSenhaVar === ""
+  ) {
+    cardErro.style.display = "block";
+    mensagem_erro.innerHTML = "Preencha todos os campos!";
+    return; // <-- IMPRESCINDÍVEL: para impedir o fetch
   }
 
-  // Listando emails cadastrados 
-  // function listar() {
-  //   fetch("/emails/listar", {
-  //     method: "GET",
-  //   })
-  //     .then(function (resposta) {
-  //       resposta.json().then((email) => {
-  //         emails.forEach((email) => {
-  //           listaEmailsCadastrados.push(emails);
-  //         });
-  //       });
-  //     })
-  //     .catch(function (resposta) {
-  //       console.log(`#ERRO: ${resposta}`);
-  //     });
-  // }
+  if (senhaVar !== confirmacaoSenhaVar) {
+    cardErro.style.display = "block";
+    mensagem_erro.innerHTML = "As senhas não coincidem!";
+    return;
+  }
+
+  fetch("/usuarios/cadastrar", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+      nomeServer: nomeVar,
+      emailServer: emailVar,
+      senhaServer: senhaVar
+    }),
+  })
+    .then(function (resposta) {
+      console.log("resposta: ", resposta);
+
+      if (resposta.ok) {
+        cardErro.style.display = "block";
+        mensagem_erro.innerHTML =
+          "Cadastro realizado com sucesso! Redirecionando para tela de Login...";
+
+        setTimeout(() => {
+          window.location = "login.html";
+        }, 2000);
+
+        limparFormulario();
+      } else {
+        mensagem_erro.innerHTML = "Erro no cadastro. Tente novamente.";
+        cardErro.style.display = "block";
+        console.warn("Erro ao cadastrar.");
+      }
+    })
+    .catch(function (resposta) {
+      console.error(`#ERRO: ${resposta}`);
+    });
+
+  return false;
+}
 
 </script>
+
+</html>
+
 

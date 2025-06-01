@@ -34,7 +34,7 @@ body {
 .logo-container {
   display: flex;
   align-items: center;
-  gap: px;
+  gap: 10px;
   height: 100%;
 }
 
@@ -443,7 +443,7 @@ align-items: start;
   font-weight: 600 !important;
 }
 
-.formulario {
+.formulario2 {
   display: flex;
   flex-direction: column;
 }
@@ -470,11 +470,11 @@ input {
   margin-top: 5px;
 }
 
-.loading-div {
+/* .loading-div {
   width: 50px;
   margin: auto;
   display: none;
-}
+} */
 
 .loading-div img {
   height: 50px;
@@ -805,7 +805,7 @@ button {
   left: 0;
   width: 100%;
   height: 100%;
-  background-image: url('./assets/imgs/EminemQuiz.png');
+  background-image: url('/assets/imgs/EminemQuiz.png');
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -813,8 +813,9 @@ button {
   z-index: -1;
 }
 
+
 .quiz-title {
-  color: #ED145B;
+  color: #ec390c;
   font-size: 3rem;
   font-weight: 900;
   text-align: center;
@@ -826,20 +827,23 @@ button {
 }
 
 .quiz-box {
-  background-color: #ED145B;
-  padding: 30px;
-  border-radius: 10px;
+  background-color: #ec390c;
+  padding: 30px 40px;
+  border-radius: 12px;
   width: 80%;
   max-width: 600px;
   text-align: center;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 6px 15px rgba(235, 44, 11, 0.6);
+  border: 2px solid #ef0808;
+  margin-bottom: 30px;
 }
 
 .quiz-question {
   color: #000;
-  font-size: 1.5rem;
+  font-size: 1.7rem;
   font-weight: 700;
-  margin-bottom: 30px;
+  margin-bottom: 25px;
+  text-shadow: 1px 1px 1px rgba(255,255,255,0.3);
 }
 
 .quiz-button-container {
@@ -867,18 +871,22 @@ button {
 }
 
 #pontuacaoEJogo {
-  width: 90%;
-  max-width: 800px;
-  margin: 20px auto;
-  padding: 20px;
-  background-color: rgba(0, 0, 0, 0.7);
-  border-radius: 10px;
+  width: 80%;
+  max-width: 600px;
+  margin: 0 auto 40px;
+  padding: 25px 35px;
+  background-color: #ec390c;
+  border-radius: 12px;
   color: #fff;
+  font-size: 1.2rem;
+  font-weight: 700;
+ box-shadow: 0 6px 15px rgba(235, 44, 11, 0.6);
   display: none;
+  border: 2px solid #ff0000;
 }
 
 #jogo {
-  width: 100%;
+  width: 93%;
   margin-top: 20px;
   background-color: rgba(0, 0, 0, 0.5);
   border-radius: 10px;
@@ -887,32 +895,50 @@ button {
 
 #opcoes span {
   margin: 10px 0;
-  padding: 10px;
-  background-color: rgba(255, 255, 255, 0.1);
-  border-radius: 5px;
+  padding: 12px 15px;
+  background-color: rgba(255, 255, 255, 0.15);
+  border-radius: 8px;
   display: block;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  font-weight: 600;
+  color: #fff;
+  user-select: none;
+  
+}
+
+#opcoes span:hover {
+  background-color: rgba(255, 255, 255, 0.35);
 }
 
 #botoes button {
-  margin: 10px 0;
-  padding: 10px 20px;
-  background-color: #ED145B;
-  color: #fff;
-  border: none;
-  border-radius: 5px;
+  margin: 12px 0;
+  padding: 12px 25px;
+  background-color: #000;
+  color: #ec390c;
+  border: 2px solid #ec390c;
+  border-radius: 8px;
   cursor: pointer;
-  font-weight: bold;
-  transition: background-color 0.3s;
+  font-weight: 700;
+  transition: all 0.3s ease;
 }
 
+#botoes button:hover:not(:disabled) {
+  background-color: #ec390c;
+  color: #000;
+  border-color: #c14502;
+}
 #botoes button:hover {
-  background-color: #c5114b;
+  background-color: #df0606;
 }
 
 #botoes button:disabled {
   background-color: #666;
+  color: #ccc;
+  border-color: #444;
   cursor: not-allowed;
 }
+
 
 .text-success-with-bg {
   background-color: rgba(0, 255, 0, 0.2);
@@ -933,19 +959,29 @@ button {
   .quiz-title {
     font-size: 2rem;
   }
-  
+  .quiz-box, #pontuacaoEJogo {
+    width: 90%;
+    padding: 20px 25px;
+  }
   .quiz-box {
     width: 90%;
     padding: 20px;
   }
-  
+   #opcoes span {
+    font-size: 1rem;
+  }
+
   .quiz-question {
-    font-size: 1.2rem;
+    font-size: 1.4rem;
   }
   
   #pontuacaoEJogo {
     width: 95%;
     padding: 15px;
+  }
+   #botoes button {
+    padding: 10px 20px;
+    font-size: 1rem;
   }
 }
 
