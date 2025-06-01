@@ -26,10 +26,7 @@ var empresasRouter = require("./src/routes/empresas");
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
-// Certifique-se que está configurado assim:
-app.use(express.static(path.join(__dirname, 'public'), {
-    extensions: ['html', 'htm'] // Para servir .html sem precisar da extensão
-}));
+app.use(express.static(path.join(__dirname, "public")));
 
 app.use(cors());
 

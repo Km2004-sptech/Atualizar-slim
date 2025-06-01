@@ -6,8 +6,8 @@
 comandos para mysql - banco local
 */
 
-CREATE DATABASE IF NOT EXISTS SlimArchives;
-USE SlimArchives;
+CREATE DATABASE IF NOT EXISTS slim_archives;
+USE slim_archives;
 
 CREATE TABLE Usuario (
     id INT AUTO_INCREMENT PRIMARY KEY,

@@ -8,14 +8,12 @@
 
   <title>Slim Archives | Cadastro</title>
 
-  <script src="./js/sessao.js"></script>
-
   <link rel="stylesheet" href="./css/estilo.css" />
   <link rel="icon" href="./assets/icon/IconEminem.png" />
   <link rel="preconnect" href="https://fonts.gstatic.com" />
 </head>
 
-<body onload="listar()">
+<body>
   <!--header inicio-->
   <div class="header">
     <div class="container">
@@ -79,25 +77,26 @@
             <span>Álbum do Eminem favorito:</span>
             <select id="album_input" class="album-select">
               <option value="" disabled selected>Selecione seu álbum favorito</option>
-              <option value="The Slim Shady LP (1999)">The Slim Shady LP (1999)</option>
-              <option value="The Marshall Mathers LP (2000)">The Marshall Mathers LP (2000)</option>
-              <option value="The Eminem Show (2002)">The Eminem Show (2002)</option>
-              <option value="8 Mile Soundtrack (2002)">8 Mile Soundtrack (2002)</option>
-              <option value="D12 World (2004) - com D12">D12 World (2004) - com D12</option>
-              <option value="Encore (2004)">Encore (2004)</option>
-              <option value="Curtain Call: The Hits (2005)">Curtain Call: The Hits (2005)</option>
-              <option value="Eminem Presents The Re-Up (2006)">Eminem Presents The Re-Up (2006)</option>
-              <option value="Relapse (2009)">Relapse (2009)</option>
-              <option value="Relapse: Refil (2009)">Relapse Refil (2009)</option>
-              <option value="Recovery (2010)">Recovery (2010)</option>
-              <option value="Hell: The Sequel (2011) - com Bad Meets Evil">Hell: The Sequel (2011) - com Bad Meets Evil</option>
-              <option value="The Marshall Mathers LP 2 (2013)">The Marshall Mathers LP 2 (2013)</option>
-              <option value="Revival (2017)">Revival (2017)</option>
-              <option value="Kamikaze (2018)">Kamikaze (2018)</option>
-              <option value="Music to Be Murdered By (2020)">Music to Be Murdered By (2020)</option>
-              <option value="Music to Be Murdered By - Side B (2020)">Music to Be Murdered By - Side B (2020)</option>
-              <option value="Curtain Call 2 (2022)">Curtain Call 2 (2022)</option>
-              <option value="The Death of Slim Shady (2024)">The Death of Slim Shady (2024)</option>
+              <option value="1">Infinite (1996)</option>
+              <option value="2">The Slim Shady LP (1999)</option>
+              <option value="3">The Marshall Mathers LP (2000)</option>
+              <option value="4">The Eminem Show (2002)</option>
+              <option value="5">8 Mile Soundtrack (2002)</option>
+              <option value="6">D12 World (2004) - com D12</option>
+              <option value="7">Encore (2004)</option>
+              <option value="8">Curtain Call: The Hits (2005)</option>
+              <option value="9">Eminem Presents The Re-Up (2006)</option>
+              <option value="10">Relapse (2009)</option>
+              <option value="11">Relapse Refil (2009)</option>
+              <option value="12">Recovery (2010)</option>
+              <option value="13">Hell: The Sequel (2011) - com Bad Meets Evil</option>
+              <option value="14">The Marshall Mathers LP 2 (2013)</option>
+              <option value="15">Revival (2017)</option>
+              <option value="16">Kamikaze (2018)</option>
+              <option value="17">Music to Be Murdered By (2020)</option>
+              <option value="18">Music to Be Murdered By - Side B (2020)</option>
+              <option value="19">Curtain Call 2 (2022)</option>
+              <option value="20">The Death of Slim Shady (2024)</option>
             </select>
           </div>
           <button class="botao" onclick="cadastrar()">Cadastrar</button>
@@ -166,40 +165,28 @@
   let listaEmailsCadastrados = [];
 
   function cadastrar() {
-    // aguardar();
+
 
     //Recupere o valor da nova input pelo nome do id
     // Agora vá para o método fetch logo abaixo
     var nomeVar = nome_input.value;
-    var nomeUsuario = nomeUsuario_input.value;
     var emailVar = email_input.value;
     var senhaVar = senha_input.value;
     var confirmacaoSenhaVar = confirmacao_senha_input.value;
-    var album = album_input.value;
-    var idEmailVincular
+    // var album = Number(album_input.value);
+    //var idEmailVincular
 
     // Verificando se há algum campo em branco
     if (
       nomeVar == "" ||
-      NomeUsuario == "" ||
       emailVar == "" ||
       senhaVar == "" ||
-      confirmacaoSenhaVar == "" ||
-      codigoVar == "" ||
-      album == ""
-    ) {
-      cardErro.style.display = "block";
-      mensagem_erro.innerHTML =
-        "(Mensagem de erro para todos os campos em branco)";
-
-      finalizarAguardar();
-      return false;
-    } else {
-      setInterval(sumirMensagem, 5000);
-    }
+      confirmacaoSenhaVar == "" 
+    
+    ) 
 
     // Verificando se o email é de alguma pessoa cadastrada
-    for (let i = 0; i < listaEmailsCadastrados.length; i++) {
+    /*for (let i = 0; i < listaEmailsCadastrados.length; i++) {
       if (listaEmailsCadastrados[i].codigo_ativacao == codigoVar) {
         idEmailVincular = listaEmailsCadastrados[i].id
         console.log("Código de ativação válido.");
@@ -207,28 +194,31 @@
       } else {
         cardErro.style.display = "block";
         mensagem_erro.innerHTML = "(Mensagem de erro para código inválido)";
-        finalizarAguardar();
+
       }
-    }
+    }*/
 
     // Enviando o valor da nova input
     fetch("/usuarios/cadastrar", {
       method: "POST",
+    
       headers: {
         "Content-Type": "application/json",
       },
+
       body: JSON.stringify({
         // crie um atributo que recebe o valor recuperado aqui
         // Agora vá para o arquivo routes/usuario.js
         nomeServer: nomeVar,
-        nomeUsuarioServer : nomeUsuarioVar,
         emailServer: emailVar,
         senhaServer: senhaVar,
-        idEmailVincularServer: idEmailVincular
+        //  albumServer: album
+        //idEmailVincularServer: idEmailVincular
       }),
     })
       .then(function (resposta) {
         console.log("resposta: ", resposta);
+          console.log("entrou");
 
         if (resposta.ok) {
           cardErro.style.display = "block";
@@ -241,49 +231,35 @@
           }, "2000");
 
           limparFormulario();
-          finalizarAguardar();
+        
         } else {
           throw "Houve um erro ao tentar realizar o cadastro!";
         }
       })
       .catch(function (resposta) {
         console.log(`#ERRO: ${resposta}`);
-        finalizarAguardar();
+     
       });
 
     return false;
   }
 
   // Listando emails cadastrados 
-  function listar() {
-    fetch("/emails/listar", {
-      method: "GET",
-    })
-      .then(function (resposta) {
-        resposta.json().then((email) => {
-          emails.forEach((email) => {
-            listaEmailsCadastrados.push(emails);
-          });
-        });
-      })
-      .catch(function (resposta) {
-        console.log(`#ERRO: ${resposta}`);
-      });
-  }
+  // function listar() {
+  //   fetch("/emails/listar", {
+  //     method: "GET",
+  //   })
+  //     .then(function (resposta) {
+  //       resposta.json().then((email) => {
+  //         emails.forEach((email) => {
+  //           listaEmailsCadastrados.push(emails);
+  //         });
+  //       });
+  //     })
+  //     .catch(function (resposta) {
+  //       console.log(`#ERRO: ${resposta}`);
+  //     });
+  // }
 
-  function sumirMensagem() {
-    cardErro.style.display = "none";
-  }
-
-  async function registerUser(userData) {
-  const response = await fetch('http://localhost:3000/api/register', {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-    },
-    body: JSON.stringify(userData),
-  });
-  return await response.json();
-}
 </script>
 

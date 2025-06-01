@@ -12,21 +12,17 @@ function autenticar(email, senha) {
     return database.executar(instrucaoSql, [email, senha]);
 }
 
-function cadastrar(nome, nomeUsuario, email, senha, album) {
-    const instrucaoSql = `
-        INSERT INTO Usuario 
-        (nome, nome_usuario, email, senha, album_favorito_id) 
-        VALUES (?, ?, ?, ?, ?);
-    `;
-    return database.executar(instrucaoSql, [
-        nome,
-        nomeUsuario, // Pode ser null
-        email,
-        senha,
-        album // Pode ser null
-    ]);
-}
+function cadastrar(nome, email, senha) {
+    console.log("ACESSEI O USUARIO MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function cadastrar():", nome, email, senha);
 
+ 
+    var instrucaoSql = 
+        `INSERT INTO Usuario (nome, email, senha) VALUES ('${nome}', '${email}', '${senha}');`
+    ;
+
+    return database.executar(instrucaoSql);
+
+}
 module.exports = {
     autenticar,
     cadastrar
