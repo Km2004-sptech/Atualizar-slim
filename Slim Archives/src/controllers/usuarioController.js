@@ -72,8 +72,28 @@ async function registrarResultadoQuiz(req, res) {
     }
 }
 
+async function buscarResultadosQuiz(req, res) {
+    const usuario_id = req.session.usuario_id;
+
+    if (!usuario_id) {
+        return res.status(401).json({ mensagem: "Usuário não autenticado" });
+    }
+
+    try {
+        const resultados = await usuarioModel.buscarResultadosQuiz(usuario_id);
+        res.json(resultados);
+    } catch (erro) {
+        console.error("Erro ao buscar resultados do quiz:", erro);
+        res.status(500).json({ mensagem: "Erro interno" });
+    }
+}
+
+
+
+
 module.exports = {
     autenticar,
     cadastrar,
-    registrarResultadoQuiz
+    registrarResultadoQuiz,
+     buscarResultadosQuiz
 };

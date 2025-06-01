@@ -385,6 +385,31 @@
         btnProx.disabled = true
         btnSubmeter.disabled = true
         btnTentarNovamente.disabled = false
+
+        // Supondo que o ID do usuário esteja armazenado em sessionStorage
+const idUsuario = sessionStorage.ID_USUARIO; 
+
+fetch("/usuarios/quiz", {
+    method: "POST",
+    headers: {
+        "Content-Type": "application/json"
+    },
+    credentials: "include",
+    body: JSON.stringify({
+        quantidade_acertos: pontuacaoFinal
+    })
+})
+.then(res => {
+    if (res.ok) {
+        console.log("Pontuação registrada com sucesso.");
+    } else {
+        console.error("Erro ao registrar pontuação.");
+    }
+})
+.catch(err => {
+    console.error("Erro de rede:", err);
+});
+
     }
 </script>
 

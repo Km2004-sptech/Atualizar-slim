@@ -27,11 +27,22 @@ async function registrarQuiz(usuario_id, quantidade_acertos) {
   }
 }
 
+async function buscarResultadosQuiz(usuario_id) {
+    const query = `
+        SELECT data_hora, quantidade_acertos
+        FROM Quiz
+        WHERE usuario_id = ?
+        ORDER BY data_hora ASC
+    `;
+    return await database.executar(query, [usuario_id]);
+}
 
-// Se a sua função database.executar não aceita callback, você pode criar uma função nova ou ajustar a execução
+
+
 
 module.exports = {
     autenticar,
     cadastrar,
-    registrarQuiz
+    registrarQuiz,
+      buscarResultadosQuiz
 };
