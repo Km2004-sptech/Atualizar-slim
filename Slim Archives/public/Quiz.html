@@ -183,7 +183,7 @@
     if (!idUsuario) return;
 
     try {
-      const resposta = await fetch(`http://localhost:3333/quiz/usuario/${idUsuario}`);
+      const resposta = await fetch(`http://localhost:8080/quiz/usuario/${idUsuario}`);
       if (!resposta.ok) throw new Error("Erro ao buscar dados do quiz");
       
       const dados = await resposta.json();

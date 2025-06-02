@@ -5,11 +5,9 @@ USE slim_archives;
 CREATE TABLE Usuario (  
     id INT AUTO_INCREMENT PRIMARY KEY,
     nome VARCHAR(100) NOT NULL,
-   -- nome_usuario VARCHAR(50) UNIQUE NOT NULL,
     email VARCHAR(100) UNIQUE NOT NULL,
     senha VARCHAR(20) NOT NULL
-  --  album_favorito_id INT,
-   -- FOREIGN KEY (album_favorito_id) REFERENCES albuns(id)
+  
 );
 
 CREATE TABLE albuns (
