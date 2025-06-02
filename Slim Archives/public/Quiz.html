@@ -8,11 +8,13 @@
 
     <title>Slim Archives | Quiz</title>
 
-    <script src="./js/sessao.js"></script>
+    <!-- <script src="./js/dashboard.js"></script> -->
 
     <link rel="stylesheet" href="./css/estilo.css">
     <link rel="icon" href="./assets/icon/IconEminem.png">
     <link rel="preconnect" href="https://fonts.gstatic.com">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
 </head>
 
 <body onload="onloadEsconder()">
@@ -119,6 +121,11 @@
     </div>
 </div>
 
+<div id="grafico-container" style="max-width: 600px; margin: 40px auto;">
+  <canvas id="graficoQuiz"></canvas>
+</div>
+
+
     <div class="footer">
     <div class="container">
       <div class="footer-left">
@@ -164,7 +171,71 @@
     </div>
   </div>
 
+ 
+
+
+
+</body>
 <script>
+
+ async function carregarGraficoQuiz() {
+    const idUsuario = sessionStorage.ID_USUARIO; // ou como você salva o ID do usuário
+    if (!idUsuario) return;
+
+    try {
+      const resposta = await fetch(`http://localhost:3333/quiz/usuario/${idUsuario}`);
+      if (!resposta.ok) throw new Error("Erro ao buscar dados do quiz");
+      
+      const dados = await resposta.json();
+      if (dados.length === 0) return; // Não exibe gráfico se não tiver quiz
+
+      const labels = dados.map(item => item.dataFormatada);
+      const acertos = dados.map(item => item.acertos);
+
+      const ctx = document.getElementById('graficoQuiz').getContext('2d');
+      new Chart(ctx, {
+        type: 'bar',
+        data: {
+          labels: labels,
+          datasets: [{
+            label: 'Acertos',
+            data: acertos,
+            backgroundColor: 'rgba(54, 162, 235, 0.7)',
+            borderColor: 'rgba(54, 162, 235, 1)',
+            borderWidth: 1,
+            borderRadius: 4
+          }]
+        },
+        options: {
+          scales: {
+            y: {
+              beginAtZero: true,
+              max: 5,
+              ticks: {
+                stepSize: 1
+              },
+              title: {
+                display: true,
+                text: 'Número de Acertos'
+              }
+            },
+            x: {
+              title: {
+                display: true,
+                text: 'Data e Hora'
+              }
+            }
+          }
+        }
+      });
+
+    } catch (erro) {
+      console.error(erro);
+    }
+  }
+
+  window.onload = carregarGraficoQuiz;
+
     const listaDeQuestoes = [
         {
             pergunta: "Qual foi a primeira música do Eminem?",
@@ -389,6 +460,8 @@
         // Supondo que o ID do usuário esteja armazenado em sessionStorage
 const idUsuario = sessionStorage.ID_USUARIO; 
 
+
+console.log("ID do usuário logado:", sessionStorage.ID_USUARIO);
 fetch("/usuarios/quiz", {
     method: "POST",
     headers: {
