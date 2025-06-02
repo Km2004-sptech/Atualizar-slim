@@ -1,0 +1,159 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Slim Archives | Discografia</title>
+
+    <script src="./js/sessao.js"></script>
+
+    <link rel="stylesheet" href="./css/estilo.css">
+    <link rel="icon" href="./assets/icon/IconEminem.png">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+</head>
+
+<body>
+  <div class="header">
+    <div class="container">
+      <div class="logo-container">
+        
+        <img src="./assets/icon/IconEminem.png" class="logo" alt="Logo Slim Archives">
+        <h1 class="titulo">Slim Archives</h1>
+      </div>
+      <ul class="navbar">
+        <li class="agora">
+          <a href="#">Inicial</a>
+        </li>
+       <li class="agora">
+          <a href="#">Discografia</a>
+        </li>
+        <li>
+          <a href="Quiz.html">Quiz</a>
+        </li>
+        <li>|</li>
+        <li>
+          <a href="login.html">Login</a>
+        </li>
+        <li>
+          <a href="cadastro.html">Cadastro</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+  
+ <section class="album-detalhes">
+  <div class="container">
+    <h2 id="albumTitulo">Título do Álbum</h2>
+    <img id="albumCapa" src="" alt="Capa do Álbum" class="album-capa">
+    <ul id="listaMusicas" class="lista-musicas"></ul>
+  </div>
+</section>
+
+  </div>
+</section>
+   
+    <div class="footer">
+      <div class="container">
+        <div class="footer-left">
+          <h3 class="footer-title">Slim Archives</h3>
+          <p class="footer-description">Página dedicada ao Eminem<br>- Para stans assim como eu -</p>
+        </div>
+        
+        <div class="footer-center">
+          <div class="footer-image-placeholder">
+            <img src="./assets/imgs/Spotify.png" class="footer-image-placeholder">
+          </div>
+          <h4>Feito por Kauã Medeiros &copy;</h4>
+          <span class="version">v1.0.0</span>
+        </div>
+        
+        <div class="footer-right">
+          <h4>Redes sociais do Eminem:</h4>
+          <div class="social-link">
+            <a href="https://www.instagram.com/eminem" target="_blank" class="social-wrapper">
+              <img src="./assets/icon/icons8-instagram-26.png" class="social-icon">
+              <span class="social-url">Instagram</span>
+            </a>
+          </div>
+          <div class="social-link">
+            <a href="https://twitter.com/Eminem" target="_blank" class="social-wrapper">
+              <img src="./assets/icon/X.png" class="social-icon">
+              <span class="social-url">X (antigo twitter)</span>
+            </a>
+          </div>
+          <div class="social-link">
+            <a href="https://www.youtube.com/eminem" target="_blank" class="social-wrapper">
+              <img src="./assets/icon/icons8-youtube-50.png" class="social-icon">
+              <span class="social-url">Youtube</span>
+            </a>
+          </div>
+          <div class="social-link">
+            <a href="https://www.spotify.com/eminem" target="_blank" class="social-wrapper">
+              <img src="./assets/icon/SpotyfyLogoNovo.png" class="social-icon">
+              <span class="social-url">Spotify</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+  </body>
+<script>
+
+
+  const albuns = {
+    infinite: {
+      titulo: "Infinite",
+      capa: "./assets/discografia/Infinite.png",
+      musicas: [
+        "Infinite",
+        "It's OK",
+        "313",
+        "Maxine",
+        "Open Mic"
+      ]
+    },
+    relapse: {
+      titulo: "Relapse",
+      capa: "./assets/discografia/Relapse.png",
+      musicas: [
+        "Dr. West (Skit)",
+        "3 a.m.",
+        "My Mom",
+        "Insane",
+        "Bagpipes from Baghdad"
+      ]
+    },
+    // adicione os outros álbuns aqui
+  };
+
+  const params = new URLSearchParams(window.location.search);
+  const albumId = params.get("album");
+  const album = albuns[albumId];
+
+  if (album) {
+    document.getElementById("albumTitulo").textContent = album.titulo;
+    document.getElementById("albumCapa").src = album.capa;
+
+    const lista = document.getElementById("listaMusicas");
+    album.musicas.forEach(musica => {
+      const li = document.createElement("li");
+      li.textContent = musica;
+      lista.appendChild(li);
+    });
+  } else {
+    document.getElementById("albumTitulo").textContent = "Álbum não encontrado";
+  }
+</script>
+
+
+</script>
+</html>
+
+
+

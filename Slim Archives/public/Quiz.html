@@ -8,7 +8,7 @@
 
     <title>Slim Archives | Quiz</title>
 
-    <!-- <script src="./js/dashboard.js"></script> -->
+
 
     <link rel="stylesheet" href="./css/estilo.css">
     <link rel="icon" href="./assets/icon/IconEminem.png">
@@ -376,41 +376,40 @@
         window.location.reload()
     }
 
-    function checarResposta() {
-        const questaoAtual = listaDeQuestoes[numeroDaQuestaoAtual] // questão atual 
-        const respostaQuestaoAtual = questaoAtual.alternativaCorreta // qual é a resposta correta da questão atual
+   function checarResposta() {
+    const questaoAtual = listaDeQuestoes[numeroDaQuestaoAtual];
+    const respostaQuestaoAtual = questaoAtual.alternativaCorreta;
 
-        const options = document.getElementsByName("option"); // recupera alternativas no html
+    const options = document.getElementsByName("option");
 
-        let alternativaCorreta = null // variável para armazenar a alternativa correta
+    let alternativaCorreta = null;
 
-        options.forEach((option) => {
-            if (option.value === respostaQuestaoAtual) {
-                console.log("alternativaCorreta está no componente: " + alternativaCorreta)
-                alternativaCorreta = option.labels[0].id
-            }
-        })
+    options.forEach((option) => {
+        if (option.value === respostaQuestaoAtual) {
+            alternativaCorreta = option.labels[0].id;
+        }
+    });
 
-        // verifica se resposta assinalada é correta
-        options.forEach((option) => {
-            if (option.checked === true && option.value === respostaQuestaoAtual) {
-                document.getElementById(alternativaCorreta).classList.add("text-success-with-bg")
-                pontuacaoFinal++
-                certas++
-                document.getElementById("spanCertas").innerHTML = certas
-                numeroDaQuestaoAtual++
-            } else if (option.checked && option.value !== respostaQuestaoAtual) {
-                const wrongLabelId = option.labels[0].id
+    options.forEach((option) => {
+        if (option.checked === true && option.value === respostaQuestaoAtual) {
+            // Usuário acertou
+            document.getElementById(alternativaCorreta).classList.add("text-success-with-bg");
+            pontuacaoFinal++;
+            certas++;
+            document.getElementById("spanCertas").innerHTML = certas;
+        } else if (option.checked && option.value !== respostaQuestaoAtual) {
+            // Usuário errou — só marca a resposta errada
+            const wrongLabelId = option.labels[0].id;
+            document.getElementById(wrongLabelId).classList.add("text-danger-with-bg");
+            tentativaIncorreta++;
+            erradas++;
+            document.getElementById("spanErradas").innerHTML = erradas;
+        }
+    });
 
-                document.getElementById(wrongLabelId).classList.add("text-danger-with-bg")
-                document.getElementById(alternativaCorreta).classList.add("text-success-with-bg")
-                tentativaIncorreta++
-                erradas++
-                document.getElementById("spanErradas").innerHTML = erradas
-                numeroDaQuestaoAtual++
-            }
-        })
-    }
+    numeroDaQuestaoAtual++;
+}
+
 
     function limparCoresBackgroundOpcoes() {
         const options = document.getElementsByName("option");

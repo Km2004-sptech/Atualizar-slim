@@ -7,7 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Slim Archives | Página Inicial</title>
+    <title>Slim Archives | Discografia</title>
 
     <script src="./js/sessao.js"></script>
 
@@ -20,15 +20,16 @@
   <div class="header">
     <div class="container">
       <div class="logo-container">
+        
         <img src="./assets/icon/IconEminem.png" class="logo" alt="Logo Slim Archives">
         <h1 class="titulo">Slim Archives</h1>
       </div>
       <ul class="navbar">
-        <li class="agora">
-          <a href="#">Inicial</a>
+      <li>
+          <a href="index.html">Inicial</a>
         </li>
-        <li>
-          <a href="Discografia.html">Discografia</a>
+       <li class="agora">
+          <a href="#">Discografia</a>
         </li>
         <li>
           <a href="Quiz.html">Quiz</a>
@@ -44,107 +45,130 @@
     </div>
   </div>
   
-    <div class="banner-carousel">
-      <div class="slides-container">
-        <div class="slide active">
-          <div class="container">
-            <p><span>EMINEM</span></p>
-          </div>
-        </div>
-        <div class="slide">
-          <div class="container">
-            <p><span>SLIM SHADY</span></p>
-          </div>
-        </div>
-        <div class="slide">
-          <div class="container">
-            <p><span>MARSHALL MATTERS</span></p>
-          </div>
-        </div>
-      </div>
-      <div class="indicators">
-        <span class="indicator active" data-slide="0"></span>
-        <span class="indicator" data-slide="1"></span>
-        <span class="indicator" data-slide="2"></span>
-      </div>
-    </div>
-  
-<div class="music-player">
-  <div class="album-cover">
-    <img src="caminho/para/capa.jpg" alt="Capa do Álbum" id="currentAlbumCover">
-  </div>
-  <div class="player-controls">
-    <h3 class="music-title" id="currentMusicTitle">Nome da Música</h3>
-    <p class="album-info" id="currentAlbumInfo">Álbum • Ano</p>
-    
-    <audio id="audioPlayer"></audio>
-    
-    <div class="progress-container">
-      <div class="progress-bar" id="progressBar"></div>
-    </div>
-    
-    <div class="time-info">
-      <span id="currentTime">0:00</span>
-      <span id="duration">0:00</span>
-    </div>
-    
-    <div class="controls">
-      <button class="control-btn prev-btn">⏮</button>
-      <button class="control-btn play-btn">⏵</button>
-      <button class="control-btn next-btn">⏭</button>
-    </div>
-  </div>
-</div>
-	
-<div class="playlist">
-  <div class="playlist-header">
-    <h3>Playlist</h3>
-    <span>Total: 150 músicas</span>
-  </div>
-  <div class="playlist-items">
-    <!-- Itens serão gerados pelo JavaScript -->
-  </div>
-</div>
+  <section class="discografia">
+  <h2 class="discografia-titulo">Discografia</h2>
+  <div class="timeline">
 
-    <div class="social">
-      <div class="container">
-        <div class="content-box first">
-          <div class="image-container">
-            <img src="assets/imgs/planet-earth_color.png" alt="Missão">
-          </div>
-          <div class="text-container">
-            <h4 style="color: #ec390c;">MISSÃO</h4>
-            <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Et, quas cupiditate asperiores provident magnam
-              vitae illum iusto fugiat atque deleniti nulla sed iure suscipit, laborum, aliquid accusantium cum dicta
-              minima.</p>
-          </div>
-        </div>
-        
-        <div class="content-box second">
-          <div class="text-container">
-            <h4 style="color: #ec390c;">VISÃO</h4>
-            <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Et, quas cupiditate asperiores provident magnam
-              vitae illum iusto fugiat atque deleniti nulla sed iure suscipit, laborum, aliquid accusantium cum dicta
-              minima.</p>
-          </div>
-          <div class="image-container">
-            <img src="assets/imgs/lightbulb_color.png" alt="Visão">
-          </div>
-        </div>
-        
-        <div class="content-box third">
-          <div class="image-container">
-            <img src="assets/imgs/growth_color.png" alt="Valores">
-          </div>
-          <div class="text-container">
-            <h4 style="color: #ec390c;">VALORES</h4>
-            <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Et, quas cupiditate asperiores provident magnam
-              vitae illum iusto fugiat atque deleniti nulla sed iure suscipit, laborum, aliquid accusantium cum dicta
-              minima.</p>
-          </div>
-        </div>
+    <div class="album-card">
+      <a href="album.html?album=infinite" class="album-card"></a>
+      <img src="./assets/discografia/Infinite.png" alt="Infinite">
+      <div class="album-info">
+        <h3>Infinite</h3>
+        <p>1996</p>
+      </div>
+      </a>
+    </div>
+
+    <div class="album-card">
+      <img src="./assets/discografia/SlimLp.png" alt="The Slim Shady LP">
+      <div class="album-info">
+        <h3>The Slim Shady LP</h3>
+        <p>1999</p>
       </div>
     </div>
+
+    <div class="album-card">
+      <img src="./assets/discografia/MarshallLp.png" alt="The Marshall Mathers LP">
+      <div class="album-info">
+        <h3>The Marshall Mathers LP</h3>
+        <p>2000</p>
+      </div>
+    </div>
+
+    <div class="album-card">
+      <img src="./assets/discografia/EminemShow.png" alt="The Eminem Show">
+      <div class="album-info">
+        <h3>The Eminem Show</h3>
+        <p>2002</p>
+      </div>
+    </div>
+
+    <div class="album-card">
+      <img src="./assets/discografia/8Mile.png" alt="8 Mile">
+      <div class="album-info">
+        <h3>8 Mile</h3>
+        <p>2002</p>
+      </div>
+    </div>
+
+    <div class="album-card">
+      <img src="./assets/discografia/Encore.png" alt="Encore">
+      <div class="album-info">
+        <h3>Encore</h3>
+        <p>2004</p>
+      </div>
+    </div>
+
+    <div class="album-card">
+      <img src="./assets/discografia/Relapse.png" alt="Relapse">
+      <div class="album-info">
+        <h3>Relapse</h3>
+        <p>2009</p>
+      </div>
+    </div>
+
+    <div class="album-card">
+      <img src="./assets/discografia/Recovery.png" alt="Recovery">
+      <div class="album-info">
+        <h3>Recovery</h3>
+        <p>2010</p>
+      </div>
+    </div>
+
+    <div class="album-card">
+      <img src="./assets/discografia/MarshallLp2.png" alt="The Marshall Mathers LP 2">
+      <div class="album-info">
+        <h3>The Marshall Mathers LP 2</h3>
+        <p>2013</p>
+      </div>
+    </div>
+
+    <div class="album-card">
+      <img src="./assets/discografia/Revival.png" alt="Revival">
+      <div class="album-info">
+        <h3>Revival</h3>
+        <p>2017</p>
+      </div>
+    </div>
+
+    <div class="album-card">
+      <img src="./assets/discografia/Kamikaze.png" alt="Kamikaze">
+      <div class="album-info">
+        <h3>Kamikaze</h3>
+        <p>2018</p>
+      </div>
+    </div>
+
+    <div class="album-card">
+      <img src="./assets/discografia/Murder.png" alt="Music To Be Murdered By">
+      <div class="album-info">
+        <h3>Music To Be Murdered By</h3>
+        <p>2020</p>
+      </div>
+    </div>
+
+    <div class="album-card">
+      <img src="./assets/discografia/MurderB.png" alt="Music To Be Murdered By – Side B (Deluxe Edition)">
+      <div class="album-info">
+        <h3>Music To Be Murdered By – Side B (Deluxe Edition)</h3>
+        <p>2020</p>
+      </div>
+    </div>
+
+    <div class="album-card">
+      <img src="./assets/discografia/SlimMorte.png" alt="The Death Of Slim Shady (Coup De Grace)">
+      <div class="album-info">
+        <h3>The Death Of Slim Shady (Coup De Grace)</h3>
+        <p>2024</p>
+      </div>
+    </div>
+
+ 
+    <!-- Adicione mais álbuns conforme necessário -->
+
+  </div>
+</section>
+   
     <div class="footer">
       <div class="container">
         <div class="footer-left">
@@ -191,161 +215,9 @@
     </div>
 
 
-    <script>
 
-		// Lista de músicas (exemplo)
-const musicas = [
-  {
-    id: "7n3CUk03Y2gLC4S7rkJn0K", // ID da música no Spotify
-    title: "Lose Yourself",
-    album: "8 Mile Soundtrack",
-    year: "2002"
-  }
-];
 
-function playSpotifyPreview(id) {
-  const audio = new Audio(`https://p.scdn.co/mp3-preview/${id}?duration=30`);
-  audio.play();
-}
 
-// Elementos do player
-const audioPlayer = document.getElementById('audioPlayer');
-const currentAlbumCover = document.getElementById('currentAlbumCover');
-const currentMusicTitle = document.getElementById('currentMusicTitle');
-const currentAlbumInfo = document.getElementById('currentAlbumInfo');
-const progressBar = document.getElementById('progressBar');
-const currentTimeDisplay = document.getElementById('currentTime');
-const durationDisplay = document.getElementById('duration');
-const playBtn = document.querySelector('.play-btn');
-const prevBtn = document.querySelector('.prev-btn');
-const nextBtn = document.querySelector('.next-btn');
-
-let currentMusicIndex = 0;
-let isPlaying = false;
-
-// Carrega uma música
-function loadMusic(index) {
-  const music = musicas[index];
-  audioPlayer.src = music.file;
-  currentAlbumCover.src = music.cover;
-  currentMusicTitle.textContent = music.title;
-  currentAlbumInfo.textContent = `${music.album} • ${music.year}`;
-  
-  if (isPlaying) {
-    audioPlayer.play();
-  }
-}
-
-// Atualiza a barra de progresso
-audioPlayer.addEventListener('timeupdate', () => {
-  const progress = (audioPlayer.currentTime / audioPlayer.duration) * 100;
-  progressBar.style.width = `${progress}%`;
-  
-  // Atualiza os tempos
-  currentTimeDisplay.textContent = formatTime(audioPlayer.currentTime);
-  if (!isNaN(audioPlayer.duration)) {
-    durationDisplay.textContent = formatTime(audioPlayer.duration);
-  }
-});
-
-// Formata o tempo (mm:ss)
-function formatTime(seconds) {
-  const mins = Math.floor(seconds / 60);
-  const secs = Math.floor(seconds % 60);
-  return `${mins}:${secs < 10 ? '0' : ''}${secs}`;
-}
-
-// Volume control
-const volumeSlider = document.createElement('input');
-volumeSlider.type = 'range';
-volumeSlider.min = 0;
-volumeSlider.max = 1;
-volumeSlider.step = 0.01;
-volumeSlider.value = audioPlayer.volume;
-volumeSlider.addEventListener('input', () => {
-  audioPlayer.volume = volumeSlider.value;
-});
-
-// Clique na barra de progresso
-document.querySelector('.progress-container').addEventListener('click', (e) => {
-  const width = e.target.clientWidth;
-  const clickX = e.offsetX;
-  const duration = audioPlayer.duration;
-  audioPlayer.currentTime = (clickX / width) * duration;
-});
-
-// Controles
-playBtn.addEventListener('click', () => {
-  if (isPlaying) {
-    audioPlayer.pause();
-    playBtn.textContent = '⏵';
-  } else {
-    audioPlayer.play();
-    playBtn.textContent = '⏸';
-  }
-  isPlaying = !isPlaying;
-});
-
-prevBtn.addEventListener('click', () => {
-  currentMusicIndex = (currentMusicIndex - 1 + musicas.length) % musicas.length;
-  loadMusic(currentMusicIndex);
-});
-
-nextBtn.addEventListener('click', () => {
-  currentMusicIndex = (currentMusicIndex + 1) % musicas.length;
-  loadMusic(currentMusicIndex);
-});
-
-// Quando uma música termina
-audioPlayer.addEventListener('ended', () => {
-  nextBtn.click();
-});
-
-// Carrega a primeira música
-loadMusic(0);
-
-    document.addEventListener('DOMContentLoaded', function() {
-      const slides = document.querySelectorAll('.slide');
-      const indicators = document.querySelectorAll('.indicator');
-      let currentSlide = 0;
-      const slideInterval = 7000; // 7 segundos
-      
-      // Função para avançar para o próximo slide
-      function nextSlide() {
-        slides[currentSlide].classList.remove('active');
-        indicators[currentSlide].classList.remove('active');
-        
-        currentSlide = (currentSlide + 1) % slides.length;
-        
-        slides[currentSlide].classList.add('active');
-        indicators[currentSlide].classList.add('active');
-      }
-      
-      // Iniciar o carrossel automático
-      let slideTimer = setInterval(nextSlide, slideInterval);
-      
-      // Adicionar eventos aos indicadores para navegação manual
-      indicators.forEach(indicator => {
-        indicator.addEventListener('click', function() {
-          const slideIndex = parseInt(this.getAttribute('data-slide'));
-          
-          // Parar o temporizador automático quando o usuário interage
-          clearInterval(slideTimer);
-          
-          slides[currentSlide].classList.remove('active');
-          indicators[currentSlide].classList.remove('active');
-          
-          currentSlide = slideIndex;
-          
-          slides[currentSlide].classList.add('active');
-          indicators[currentSlide].classList.add('active');
-          
-          // Reiniciar o temporizador automático
-          slideTimer = setInterval(nextSlide, slideInterval);
-        });
-      });
-    });
-  </script>
   </body>
 
 </html>

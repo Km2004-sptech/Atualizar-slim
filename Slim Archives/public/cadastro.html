@@ -57,10 +57,7 @@
             <span>Nome:</span>
             <input id="nome_input" type="text" placeholder="Seu nome" />
           </div>
-          <div class="campo">
-            <span>Nome de Usuário:</span>
-            <input id="nomeUsuario_input" type="text" placeholder="Seu nome de usuário" />
-          </div>
+       
           <div class="campo">
             <span>E-mail:</span>
             <input id="email_input" type="text" placeholder="meuemail@provedor.com" />
@@ -73,32 +70,7 @@
             <span>Confirmação da Senha:</span>
             <input id="confirmacao_senha_input" type="password" placeholder="******" />
           </div>
-          <div class="campo">
-            <span>Álbum do Eminem favorito:</span>
-            <select id="album_input" class="album-select">
-              <option value="" disabled selected>Selecione seu álbum favorito</option>
-              <option value="1">Infinite (1996)</option>
-              <option value="2">The Slim Shady LP (1999)</option>
-              <option value="3">The Marshall Mathers LP (2000)</option>
-              <option value="4">The Eminem Show (2002)</option>
-              <option value="5">8 Mile Soundtrack (2002)</option>
-              <option value="6">D12 World (2004) - com D12</option>
-              <option value="7">Encore (2004)</option>
-              <option value="8">Curtain Call: The Hits (2005)</option>
-              <option value="9">Eminem Presents The Re-Up (2006)</option>
-              <option value="10">Relapse (2009)</option>
-              <option value="11">Relapse Refil (2009)</option>
-              <option value="12">Recovery (2010)</option>
-              <option value="13">Hell: The Sequel (2011) - com Bad Meets Evil</option>
-              <option value="14">The Marshall Mathers LP 2 (2013)</option>
-              <option value="15">Revival (2017)</option>
-              <option value="16">Kamikaze (2018)</option>
-              <option value="17">Music to Be Murdered By (2020)</option>
-              <option value="18">Music to Be Murdered By - Side B (2020)</option>
-              <option value="19">Curtain Call 2 (2022)</option>
-              <option value="20">The Death of Slim Shady (2024)</option>
-            </select>
-          </div>
+       
           <button class="botao" onclick="cadastrar()">Cadastrar</button>
         </div>
         <div id="div_aguardar" class="loading-div">
@@ -176,7 +148,14 @@
   ) {
     cardErro.style.display = "block";
     mensagem_erro.innerHTML = "Preencha todos os campos!";
-    return; // <-- IMPRESCINDÍVEL: para impedir o fetch
+    return;
+  }
+
+  // Verificando se email possui '@' e '.'
+  if (!emailVar.includes('@') || !emailVar.includes('.')) {
+    cardErro.style.display = "block";
+    mensagem_erro.innerHTML = "Digite um e-mail válido! Incluindo '@' e '.' ";
+    return;
   }
 
   if (senhaVar !== confirmacaoSenhaVar) {
@@ -221,6 +200,7 @@
 
   return false;
 }
+
 
 </script>
 
